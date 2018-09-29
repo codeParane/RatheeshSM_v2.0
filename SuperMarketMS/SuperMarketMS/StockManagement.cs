@@ -32,7 +32,7 @@ namespace SuperMarketMS
             {
                 cmbStoksItemCat.Items.Add(row[0].ToString());
             }
-            
+
         }
         private void cmbItemCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -42,9 +42,9 @@ namespace SuperMarketMS
             if (cmbStoksItemCat.Text == "ALL")
             {
                 cmbStocksItem.Enabled = false;
-                string qGetStocks = "SELECT "+
-                    "s.barcode AS 'Bar Code', i.iname AS 'Item Name', i.category AS "+
-                    "'Item Category', s.qty AS 'Quantity ', s.companyPrice, s.sellingPrice "+
+                string qGetStocks = "SELECT " +
+                    "s.barcode AS 'Bar Code', i.iname AS 'Item Name', i.category AS " +
+                    "'Item Category', s.qty AS 'Quantity ', s.companyPrice, s.sellingPrice " +
                     "FROM items AS i JOIN stocks AS s ON i.id = s.itemid; ";
                 MySqlDataAdapter aGetStocks = new MySqlDataAdapter(qGetStocks, dbconn.connection);
                 DataSet ds = new DataSet();
@@ -81,15 +81,15 @@ namespace SuperMarketMS
         }
         private void cmbStocksItem_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(msCmbMgStocksItem.Text == "ALL")
+            if (msCmbMgStocksItem.Text == "ALL")
             {
                 MessageBox.Show("ok");
-              //  string qGetStocks = "SELECT s.barcode, i.name, i.category, s.qty FROM items AS i JOIN stocks " +
-              //"AS s ON i.id = s.itemid WHERE i.category = '" + cmbStoksItemCat.Text + "'; ";
-              //  MySqlDataAdapter aGetStocks = new MySqlDataAdapter(qGetStocks, dbconn.connection);
-              //  DataSet ds = new DataSet();
-              //  aGetStocks.Fill(ds, "Stocks3");
-              //  dgvStocks.DataSource = ds.Tables["Stocks3"];
+                //  string qGetStocks = "SELECT s.barcode, i.name, i.category, s.qty FROM items AS i JOIN stocks " +
+                //"AS s ON i.id = s.itemid WHERE i.category = '" + cmbStoksItemCat.Text + "'; ";
+                //  MySqlDataAdapter aGetStocks = new MySqlDataAdapter(qGetStocks, dbconn.connection);
+                //  DataSet ds = new DataSet();
+                //  aGetStocks.Fill(ds, "Stocks3");
+                //  dgvStocks.DataSource = ds.Tables["Stocks3"];
             }
             else
             {
@@ -101,7 +101,7 @@ namespace SuperMarketMS
                 aGetStocks.Fill(ds, "Stocks");
                 dgvStocks.DataSource = ds.Tables["Stocks"];
             }
-            
+
         }
 
 
@@ -144,7 +144,7 @@ namespace SuperMarketMS
 
         }
 
-       
+
 
         private void tpcStock_Click(object sender, EventArgs e)
         {
@@ -153,14 +153,14 @@ namespace SuperMarketMS
 
         private void txtStocks_ValueChanged(object sender, EventArgs e)
         {
-            msStockTotal.Text = (decimal.Parse(msQuantity.Text)  + decimal.Parse(msInHand.Text)).ToString();
+            msStockTotal.Text = (decimal.Parse(msQuantity.Text) + decimal.Parse(msInHand.Text)).ToString();
         }
 
         private void txtDiscount_TextChanged(object sender, EventArgs e)
         {
             msDiscountPer.Text = "0";
             msDiscountFinal.Text = "0";
-            if(msSellingPrice.Text != "" && msSellingPrice.Text != "0" && msSellingPrice.Text != "0.00")
+            if (msSellingPrice.Text != "" && msSellingPrice.Text != "0" && msSellingPrice.Text != "0.00")
             {
                 if (msDiscount.Text != "" || msDiscount.Text != null || msDiscount.Text != "0" || msDiscount.Text != "0%")
                 {
@@ -205,7 +205,7 @@ namespace SuperMarketMS
                     msDiscountPer.Text = "0%";
                 }
             }
-            
+
         }
 
         private void tpcProducts_Click(object sender, EventArgs e)
@@ -215,7 +215,7 @@ namespace SuperMarketMS
 
         private void msAddToStock_Click(object sender, EventArgs e)
         {
-            string barcode = "", itemCategory = "", item = "", expiryDate="";
+            string barcode = "", itemCategory = "", item = "", expiryDate = "";
             decimal companyPrice = 0, sellingPrice = 0, quantity = 0;
             decimal discountP = 0;
 
@@ -225,16 +225,16 @@ namespace SuperMarketMS
                 barcode = msBarCode.Text;
                 itemCategory = msCmbMgStocksItemCat.Text;
                 item = msCmbMgStocksItem.Text;
-                companyPrice = Math.Round(decimal.Parse(msCompanyPrice.Text),2);
-                sellingPrice = Math.Round(decimal.Parse(msSellingPrice.Text),2);
-                discountP = Math.Round(decimal.Parse(msDiscountFinal.Text),2);
-                quantity = Math.Round(decimal.Parse(msStockTotal.Text),3);
+                companyPrice = Math.Round(decimal.Parse(msCompanyPrice.Text), 2);
+                sellingPrice = Math.Round(decimal.Parse(msSellingPrice.Text), 2);
+                discountP = Math.Round(decimal.Parse(msDiscountFinal.Text), 2);
+                quantity = Math.Round(decimal.Parse(msStockTotal.Text), 3);
                 expiryDate = msExpiryDate.Text;
 
                 //MessageBox.Show("Not Completed Details!!!!");
-            
-                string itemId="";
-                MySqlCommand cmd = new MySqlCommand("SELECT id FROM items WHERE iname='"+ item +"'", dbconn.connection);
+
+                string itemId = "";
+                MySqlCommand cmd = new MySqlCommand("SELECT id FROM items WHERE iname='" + item + "'", dbconn.connection);
                 dbconn.CloseConnection();
                 dbconn.OpenConnection();
                 MySqlDataReader reader = cmd.ExecuteReader();
@@ -244,14 +244,14 @@ namespace SuperMarketMS
                 }
                 reader.Close();
                 string qAddToBill = "INSERT INTO stocks VALUES (" + barcode + "," + itemId +
-               ", " + companyPrice + ", " + sellingPrice + ", " + discountP + ", " + quantity + ", '" + 
+               ", " + companyPrice + ", " + sellingPrice + ", " + discountP + ", " + quantity + ", '" +
                expiryDate + "');";
                 MySqlCommand cAddToBill = new MySqlCommand(qAddToBill, dbconn.connection);
                 int queryAffected = cAddToBill.ExecuteNonQuery();
                 if (queryAffected > 0)
                 {
                     MessageBox.Show("Stock Added!!!");
-                    msClear_Click("",e);
+                    msClear_Click("", e);
                 }
                 msBarCode.Focus();
             }
@@ -259,12 +259,12 @@ namespace SuperMarketMS
 
         private void msCompanyPrice_TextChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void msSellingPrice_TextChanged(object sender, EventArgs e)
         {
-          
+
         }
 
         private void StockManagement_Load(object sender, EventArgs e)
@@ -282,12 +282,38 @@ namespace SuperMarketMS
 
         private void button1_Click(object sender, EventArgs e)
         {
-      
+
         }
 
         private void tpcProducts_Enter(object sender, EventArgs e)
         {
-            
+            uiUpdate.Enabled = false;
+
+            iIsWeight.SelectedIndex = 1;
+
+            uiItemCategory.Items.Clear();
+            uiItemName.Items.Clear();
+            dbconn.CloseConnection();
+            dbconn.OpenConnection();
+            string qCmbItemFill = "SELECT DISTINCT category FROM items;";
+            MySqlDataAdapter aCmbItemFill = new MySqlDataAdapter(qCmbItemFill, dbconn.connection);
+            DataTable dt1 = new DataTable();
+            aCmbItemFill.Fill(dt1);
+            foreach (DataRow row in dt1.Rows)
+            {
+                uiItemCategory.Items.Add(row[0].ToString());
+            }
+
+            dbconn.CloseConnection();
+            dbconn.OpenConnection();
+            string qCmbItemFill1 = "SELECT DISTINCT iname FROM items;";
+            MySqlDataAdapter aCmbItemFill1 = new MySqlDataAdapter(qCmbItemFill1, dbconn.connection);
+            DataTable dt11 = new DataTable();
+            aCmbItemFill1.Fill(dt11);
+            foreach (DataRow row in dt11.Rows)
+            {
+                uiItemName.Items.Add(row[0].ToString());
+            }
         }
 
         private void tpcManageStock_Enter_1(object sender, EventArgs e)
@@ -314,8 +340,8 @@ namespace SuperMarketMS
                 msCmbMgStocksItemCat.Items.Add(row[0].ToString());
             }
             msCmbMgStocksItemCat.SelectedIndex = 0;
-            
-            
+
+
         }
 
         private void cmbMgStocksItemCat_SelectedIndexChanged(object sender, EventArgs e)
@@ -359,7 +385,7 @@ namespace SuperMarketMS
             msQuantity.Text = "0";
             msStockTotal.Text = "0";
             msInHand.Text = "0";
-            msDiscountFinal.Text ="0";
+            msDiscountFinal.Text = "0";
             msDiscountPer.Text = "0%";
             msExpiryDate.Value = DateTime.Now;
 
@@ -367,7 +393,7 @@ namespace SuperMarketMS
 
         }
 
-    
+
 
         private void tpcManageStock_Click(object sender, EventArgs e)
         {
@@ -389,29 +415,29 @@ namespace SuperMarketMS
             msDiscount.Text = "0";
 
             MySqlCommand cmd = new MySqlCommand("select i.iname, i.category, s.companyPrice, s.sellingPrice, s.discount, s.qty," +
-                "EXTRACT(MONTH FROM s.expiry) as expMonth, EXTRACT(DAY FROM s.expiry) as expDay, EXTRACT(YEAR FROM s.expiry) as expYear"+
-                " from items as i join stocks as s on i.id = s.itemid WHERE s.barcode = '" + msBarCode.Text +"';", dbconn.connection);
+                "EXTRACT(MONTH FROM s.expiry) as expMonth, EXTRACT(DAY FROM s.expiry) as expDay, EXTRACT(YEAR FROM s.expiry) as expYear" +
+                " from items as i join stocks as s on i.id = s.itemid WHERE s.barcode = '" + msBarCode.Text + "';", dbconn.connection);
             dbconn.CloseConnection();
             dbconn.OpenConnection();
             MySqlDataReader reader = cmd.ExecuteReader();
             if (reader.HasRows)
             {
-                
+
                 while (reader.Read())
                 {
-                   
-                        item = reader.GetString(0);
-                        itemCat = reader.GetString(1);
-                        compPrice = reader.GetString(2);
-                        selPrice = reader.GetString(3);
-                        discount = reader.GetString(4);
-                        qty = reader.GetString(5);
-                        expDate_M = reader.GetString(6);
-                        expDate_D = reader.GetString(7);
-                        expDate_Y = reader.GetString(8);
-                    
+
+                    item = reader.GetString(0);
+                    itemCat = reader.GetString(1);
+                    compPrice = reader.GetString(2);
+                    selPrice = reader.GetString(3);
+                    discount = reader.GetString(4);
+                    qty = reader.GetString(5);
+                    expDate_M = reader.GetString(6);
+                    expDate_D = reader.GetString(7);
+                    expDate_Y = reader.GetString(8);
+
                 }
-                
+
             }
             else
             {
@@ -422,13 +448,13 @@ namespace SuperMarketMS
                 msInHand.Text = "0";
                 msStockTotal.Text = "0";
                 msAddToStock.Enabled = true;
-            }     
+            }
             reader.Close();
             msAddToStock.Enabled = true;
-            if(item != "" || item != null)
+            if (item != "" || item != null)
             {
                 //MessageBox.Show(item);
-               // msAddToStock.Enabled = false;    ithu ipadiae irukatimnaan enaduthala deug pannitjhcommit panran ver ena plauthu da sollu
+                // msAddToStock.Enabled = false;    ithu ipadiae irukatimnaan enaduthala deug pannitjhcommit panran ver ena plauthu da sollu
                 msCmbMgStocksItemCat.SelectedItem = itemCat;
                 msCmbMgStocksItem.SelectedItem = item;
                 msCompanyPrice.Text = compPrice;
@@ -436,11 +462,11 @@ namespace SuperMarketMS
                 msDiscount.Text = discount;
                 msInHand.Text = qty;
                 msStockTotal.Text = msInHand.Text;
-                if(expDate_D != "" && expDate_D != "0")
+                if (expDate_D != "" && expDate_D != "0")
                 {
                     msExpiryDate.Value = new DateTime(int.Parse(expDate_Y), int.Parse(expDate_M), int.Parse(expDate_D));
                 }
-                
+
                 //int yr = int.Parse(expDate.Substring(0, 4)), mo = int.Parse(expDate.Substring(5, 2)), da = int.Parse(expDate.Substring(8, 2));
                 //msExpiryDate.Value = new DateTime(yr, mo, da);
             }
@@ -460,7 +486,7 @@ namespace SuperMarketMS
         {
             dbconn.CloseConnection();
             dbconn.OpenConnection();
-            string qAddToBill = "delete from stocks where barcode = '"+ msBarCode.Text +"'";
+            string qAddToBill = "delete from stocks where barcode = '" + msBarCode.Text + "'";
             MySqlCommand cAddToBill = new MySqlCommand(qAddToBill, dbconn.connection);
             int queryAffected = cAddToBill.ExecuteNonQuery();
             if (queryAffected > 0)
@@ -485,8 +511,8 @@ namespace SuperMarketMS
                 item = msCmbMgStocksItem.Text;
                 companyPrice = Math.Round(decimal.Parse(msCompanyPrice.Text), 2);
                 sellingPrice = Math.Round(decimal.Parse(msSellingPrice.Text), 2);
-                discountP = Math.Round(decimal.Parse(msDiscount.Text),2);
-                quantity = Math.Round(decimal.Parse(msStockTotal.Text),3);
+                discountP = Math.Round(decimal.Parse(msDiscount.Text), 2);
+                quantity = Math.Round(decimal.Parse(msStockTotal.Text), 3);
                 expiryDate = msExpiryDate.Text;
 
                 //MessageBox.Show("Not Completed Details!!!!");
@@ -527,13 +553,13 @@ namespace SuperMarketMS
 
         private void msDiscount_Leave(object sender, EventArgs e)
         {
-        
+
             if (msDiscount.Text == "" || msDiscount.Text == "%" || msDiscount.Text == "0%")
             {
                 msDiscount.Text = "0";
             }
 
-            
+
         }
 
         private void msQuantity_Enter(object sender, EventArgs e)
@@ -543,28 +569,24 @@ namespace SuperMarketMS
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            miItemUpdate.Enabled = false;
-            if (miItemId.Text != null || miItemId.Text != "")
-            {
-                miItemUpdate.Enabled = true;
-            }
+          
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-           
+
         }
 
-      
+
 
         private void msDiscount_KeyPress(object sender, KeyPressEventArgs e)
         {
-  
+
         }
 
         private void iItemName_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-               
+
             iItemCategory.Text = "-SELECT-";
             dbconn.CloseConnection();
             dbconn.OpenConnection();
@@ -581,16 +603,14 @@ namespace SuperMarketMS
                     iItemCategory.Text = reader.GetString(1);
                 }
                 miItemId.Text = itemId.ToString();
-                miUpdateAdd.Enabled = false;
-                miItemUpdate.Enabled = true;
+
             }
         }
 
         private void tpcManageProducts_Enter(object sender, EventArgs e)
         {
-            miItemUpdate.Enabled = false;
-            miUpdateAdd.Enabled = true;
-            
+
+
             //Add Items form load event
             iIsWeight.SelectedIndex = 1;
 
@@ -620,17 +640,6 @@ namespace SuperMarketMS
             button2_Click_1("", e);
         }
 
-        private void miItemId_TextChanged(object sender, EventArgs e)
-        {
-            miItemUpdate.Enabled = false;
-            miUpdateAdd.Enabled = true;
-            if (miItemId.Text != null || miItemId.Text != "")
-            {
-                miItemUpdate.Enabled = true;
-                miUpdateAdd.Enabled = false;
-            }
-        }
-
         private void button1_Click_1(object sender, EventArgs e)
         {
             dbconn.CloseConnection();
@@ -657,16 +666,16 @@ namespace SuperMarketMS
             iItemName.Text = "-SELECT-";
             iItemCategory.Text = "-SELECT-";
             miItemId.Clear();
-            
+
             iIsWeight.SelectedIndex = 1;
         }
 
         private void miItemUpdate_Click(object sender, EventArgs e)
-        {      dbconn.CloseConnection();
-              dbconn.OpenConnection();
-    
+        { dbconn.CloseConnection();
+            dbconn.OpenConnection();
+
             string qAddToBill = "UPDATE items SET iname='" + iItemName.Text + "', category='" + iItemCategory.Text + "', weight = '" +
-                    iIsWeight.Text + "' where id="+ miItemId.Text +";";
+                    iIsWeight.Text + "' where id=" + miItemId.Text + ";";
             MySqlCommand cAddToBill = new MySqlCommand(qAddToBill, dbconn.connection);
             int queryAffected = cAddToBill.ExecuteNonQuery();
             if (queryAffected > 0)
@@ -678,8 +687,8 @@ namespace SuperMarketMS
 
         private void msQuantity_TextChanged(object sender, EventArgs e)
         {
-            
-            if(msInHand.Text != "0" && msInHand.Text != "" && msQuantity.Text != "")
+
+            if (msInHand.Text != "0" && msInHand.Text != "" && msQuantity.Text != "")
             {
                 msStockTotal.Text = (decimal.Parse(msQuantity.Text) + decimal.Parse(msInHand.Text)).ToString();
             }
@@ -692,7 +701,7 @@ namespace SuperMarketMS
 
         private void msQuantity_Enter_1(object sender, EventArgs e)
         {
-            
+
         }
 
         private void msEditStock_Click(object sender, EventArgs e)
@@ -722,8 +731,7 @@ namespace SuperMarketMS
 
         private void tpcManageProducts_Click(object sender, EventArgs e)
         {
-            miUpdateAdd.Enabled = true;
-            miItemUpdate.Enabled = false;
+
         }
 
         private void msCompanyPrice_KeyPress(object sender, KeyPressEventArgs e)
@@ -743,7 +751,7 @@ namespace SuperMarketMS
 
         private void iItemName_TextChanged(object sender, EventArgs e)
         {
-              
+
             iItemCategory.Text = "-SELECT-";
             dbconn.CloseConnection();
             dbconn.OpenConnection();
@@ -760,10 +768,14 @@ namespace SuperMarketMS
                     iItemCategory.Text = reader.GetString(1);
                 }
                 miItemId.Text = itemId.ToString();
-                miUpdateAdd.Enabled = false;
-                miItemUpdate.Enabled = true;
+
             }
-           
+
+        }
+
+        private void button4_Click_2(object sender, EventArgs e)
+        {
+
         }
 
         private void iItemName_SelectedIndexChanged(object sender, EventArgs e)
@@ -784,10 +796,72 @@ namespace SuperMarketMS
                     iItemCategory.Text = reader.GetString(1);
                 }
                 miItemId.Text = itemId.ToString();
-                miUpdateAdd.Enabled = false;
-                miItemUpdate.Enabled = true;
             }
 
+        }
+
+        private void uiItemCode_TextChanged(object sender, EventArgs e)
+        {
+            if(uiItemCode.Text != "" && uiItemCode.Text != null)
+            {
+                uiUpdate.Enabled = true;
+            }
+        }
+
+        private void uiItemName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            uiItemCategory.Text = "-SELECT-";
+            dbconn.CloseConnection();
+            dbconn.OpenConnection();
+            string itemId = "";
+            MySqlCommand cmd = new MySqlCommand("SELECT id, category FROM items WHERE iname='" + uiItemName.Text + 
+                "'", dbconn.connection);
+            dbconn.CloseConnection();
+            dbconn.OpenConnection();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    itemId = reader.GetString(0);
+                    uiItemCategory.Text = reader.GetString(1);
+                }
+                uiItemCode.Text = itemId.ToString();
+                uiUpdate.Enabled = true;
+            }
+
+        }
+
+        private void uiUpdate_Click(object sender, EventArgs e)
+        {
+            dbconn.CloseConnection();
+            dbconn.OpenConnection();
+
+            string qAddToBill = "UPDATE items SET iname='" + uiItemName.Text + "', category='" + uiItemCategory.Text + "', weight = '" +
+                    uiItemIsWeight.Text + "' where id=" + uiItemCode.Text + ";";
+            MySqlCommand cAddToBill = new MySqlCommand(qAddToBill, dbconn.connection);
+            int queryAffected = cAddToBill.ExecuteNonQuery();
+            if (queryAffected > 0)
+            {
+                MessageBox.Show("Item Updated!!!");
+            }
+        }
+
+        private void uiDelete_Click(object sender, EventArgs e)
+        {
+            if(uiItemCode.Text != ""  && uiItemCode.Text != null)
+            {
+                dbconn.CloseConnection();
+                dbconn.OpenConnection();
+
+                string qAddToBill = "delete from items where id=" + uiItemCode.Text + ";";
+                MySqlCommand cAddToBill = new MySqlCommand(qAddToBill, dbconn.connection);
+                int queryAffected = cAddToBill.ExecuteNonQuery();
+                if (queryAffected > 0)
+                {
+                    MessageBox.Show("Item Deleted!!!");
+                }
+            }
         }
     }
 }

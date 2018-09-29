@@ -64,3 +64,6 @@ C:\Users\RATHEESH\Desktop\SSM\VER2.3\SuperMarketMS\SuperMarketMS\obj\Debug\Super
 C:\Users\RATHEESH\Desktop\SSM\VER2.3\SuperMarketMS\SuperMarketMS\obj\Debug\SuperMarketMS.StockManagement.resources
 C:\Users\RATHEESH\Desktop\SSM\VER2.3\SuperMarketMS\SuperMarketMS\obj\Debug\SuperMarketMS.viewDashboard.resources
 C:\Users\RATHEESH\Desktop\SSM\VER2.3\SuperMarketMS\SuperMarketMS\obj\Debug\SuperMarketMS.csproj.GenerateResource.Cache
+D:\WorkBench\Projects\RatheeshSM_v2.0\SuperMarketMS\SuperMarketMS\bin\Debug\SuperMarketMS.exe.config
+D:\WorkBench\Projects\RatheeshSM_v2.0\SuperMarketMS\SuperMarketMS\obj\Debug\SuperMarketMS.exe
+D:\WorkBench\Projects\RatheeshSM_v2.0\SuperMarketMS\SuperMarketMS\obj\Debug\SuperMarketMS.pdb

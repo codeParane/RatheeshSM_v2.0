@@ -31,6 +31,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dgvNearExpiry = new System.Windows.Forms.DataGridView();
             this.dgvLowStocks = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNearExpiry)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLowStocks)).BeginInit();
@@ -43,6 +44,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 59.67742F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 302F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 330F));
+            this.tableLayoutPanel1.Controls.Add(this.button1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.dgvNearExpiry, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.dgvLowStocks, 2, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -72,6 +74,16 @@
             this.dgvLowStocks.Size = new System.Drawing.Size(296, 336);
             this.dgvLowStocks.TabIndex = 1;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(26, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(28, 52);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Refresh";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // viewDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -96,5 +108,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DataGridView dgvNearExpiry;
         private System.Windows.Forms.DataGridView dgvLowStocks;
+        private System.Windows.Forms.Button button1;
     }
 }

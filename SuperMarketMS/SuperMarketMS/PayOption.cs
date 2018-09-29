@@ -79,6 +79,15 @@ namespace SuperMarketMS
                     poTotalBill.Text = gross_itemSaving.ToString();
                 }
             }
+            if (poCash.Text != "0" && poCash.Text != "" && poCash.Text != null)
+            {
+                poBalance.Text = Math.Round(decimal.Parse(poCash.Text) - decimal.Parse(poTotalBill.Text), 2).ToString();
+
+            }
+            else
+            {
+                poBalance.Text = poTotalBill.Text;
+            }
         }
         decimal comp = 0;
 
@@ -142,14 +151,72 @@ namespace SuperMarketMS
 
         private void poCash_TextChanged(object sender, EventArgs e)
         {
-            if(poCash.Text != "0" && poCash.Text != "" && poCash.Text  != null)
+            if (poBillDiscount.Text != "" && poBillDiscount.Text != null)
+            {
+                decimal gross = Math.Round(decimal.Parse(poGross.Text), 2);
+                decimal itemSaving = Math.Round(decimal.Parse(poItemSavings.Text), 2);
+                decimal gross_itemSaving = gross - itemSaving;
+                if (poBillDiscount.Text != "")
+                {
+                    decimal disCash = 0;
+                    decimal disPer = 0;
+
+
+
+                    string disValue = poBillDiscount.Text;
+                    decimal disValueDecimal = 0;
+
+                    if (disValue.Substring(disValue.Length - 1) == "%" && disValue != "0")
+                    {
+                        disValueDecimal = decimal.Parse(disValue.Remove(disValue.Length - 1));
+                        if (decimal.Parse(disValue.Remove(disValue.Length - 1)) >= 100 || decimal.Parse(disValue.Remove(disValue.Length - 1)) < 0)
+                        {
+                            MessageBox.Show("Wrong Discount Percentage!!!");
+                            poBillDiscount.Text = "0"; poBillDisPer.Text = "0"; poBillDisCash.Text = "0";
+                        }
+                        else
+                        {
+                            disCash = Math.Round(gross_itemSaving * (disValueDecimal / 100), 2);
+                            poBillDisCash.Text = disCash.ToString();
+                            poBillDisPer.Text = poBillDiscount.Text;
+                            poTotalBill.Text = Math.Round(gross_itemSaving - decimal.Parse(poBillDisCash.Text), 2).ToString();
+                        }
+                    }
+                    else if (disValue.Substring(disValue.Length - 1) != "%" && disValue != "0")
+                    {
+                        disValueDecimal = decimal.Parse(disValue);
+                        if (disValueDecimal < 0)
+                        {
+                            MessageBox.Show("Wrong Discount Amount!!!");
+                            poBillDiscount.Text = "0"; poBillDisPer.Text = "0"; poBillDisCash.Text = "0";
+                        }
+                        else if (disValueDecimal > 0)
+                        {
+                            decimal div = 0;
+                            div = disValueDecimal / gross_itemSaving;
+                            disPer = Math.Round(div * 100, 2);
+                            poBillDisCash.Text = poBillDiscount.Text;
+                            poBillDisPer.Text = disPer.ToString();
+                            poTotalBill.Text = Math.Round(gross_itemSaving - decimal.Parse(poBillDisCash.Text), 2).ToString();
+                        }
+                    }
+                }
+                else
+                {
+                    poBillDisPer.Text = "0%";
+                    poBillDisCash.Text = "0";
+                    poTotalBill.Text = gross_itemSaving.ToString();
+                }
+            }
+
+            if (poCash.Text != "0" && poCash.Text != "" && poCash.Text  != null)
             {
                 poBalance.Text = Math.Round(decimal.Parse(poCash.Text) - decimal.Parse(poTotalBill.Text), 2).ToString();
 
             }
             else
             {
-                poBalance.Text = "0";
+                poBalance.Text = poTotalBill.Text;
             }
         }
 
@@ -319,7 +386,8 @@ namespace SuperMarketMS
             string totalBill =
                "\n---------------------------------------------------------" +
                 "\n\n\t\tGross \t : " + String.Format("{0:N}", decimal.Parse(poGross.Text)) +
-                "\n\t\tDiscount : " + String.Format("{0:N}", (decimal.Parse(poBillDiscount.Text) + decimal.Parse(poItemSavings.Text))) +
+                "\n\t\tItems Discount : "  + String.Format("{0:N}", decimal.Parse(poItemSavings.Text)) +
+                "\n\t\tItems Discount : " + String.Format("{0:N}", decimal.Parse(poBillDiscount.Text)) +
                 "\n\t\tTotal \t : " + String.Format("{0:N}", decimal.Parse(poTotalBill.Text));
 
             string bestBuy = 

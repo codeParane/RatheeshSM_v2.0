@@ -20,9 +20,25 @@ namespace SuperMarketMS
         DbConn dbconn = new DbConn();
         private void viewDashboard_Load(object sender, EventArgs e)
         {
+            loadExpireGrid();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            loadExpireGrid();
+        }
+        public void loadExpireGrid() {
+
+            dgvLowStocks.Rows.Clear();
+            dgvLowStocks.Refresh();
+
+            dgvNearExpiry.Rows.Clear();
+            dgvNearExpiry.Refresh();
+
+
             dbconn.CloseConnection();
             dbconn.OpenConnection();
-            string qGetStocks = "select i.iname, i.category, s.qty from stocks as s join "+
+            string qGetStocks = "select i.iname, i.category, s.qty from stocks as s join " +
                 "items as i on s.itemid = i.id where s.qty < 5 group by s.itemid order by s.qty";
             MySqlDataAdapter aGetStocks = new MySqlDataAdapter(qGetStocks, dbconn.connection);
             DataSet ds = new DataSet();
@@ -32,7 +48,7 @@ namespace SuperMarketMS
 
             dbconn.CloseConnection();
             dbconn.OpenConnection();
-            string qGetStocks1 = "select i.iname, i.category, s.expiry from stocks as s join items"+
+            string qGetStocks1 = "select i.iname, i.category, s.expiry from stocks as s join items" +
                 " as i on s.itemid = i.id where s.expiry < DATE_ADD(CURDATE(), INTERVAL 5 DAY);";
             MySqlDataAdapter aGetStocks1 = new MySqlDataAdapter(qGetStocks1, dbconn.connection);
             DataSet ds1 = new DataSet();
