@@ -383,11 +383,22 @@ namespace SuperMarketMS
                 }
             }
 
+            string billDiscount = "";
+            if (poBillDiscount.Text == "" || poBillDiscount.Text == "0" || poBillDiscount.Text == null)
+            {
+                billDiscount = String.Format("{0:N}", 0.00);
+            }
+            else
+            {
+                billDiscount = String.Format("{0:N}", decimal.Parse(poBillDiscount.Text));
+            }
+
+
             string totalBill =
                "\n---------------------------------------------------------" +
                 "\n\n\t\tGross \t : " + String.Format("{0:N}", decimal.Parse(poGross.Text)) +
                 "\n\t\tItems Discount : "  + String.Format("{0:N}", decimal.Parse(poItemSavings.Text)) +
-                "\n\t\tItems Discount : " + String.Format("{0:N}", decimal.Parse(poBillDiscount.Text)) +
+                "\n\t\tBill Discount : " + billDiscount +
                 "\n\t\tTotal \t : " + String.Format("{0:N}", decimal.Parse(poTotalBill.Text));
 
             string bestBuy = 
