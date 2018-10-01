@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tpcStocks = new System.Windows.Forms.TabControl();
             this.tpcStock = new System.Windows.Forms.TabPage();
             this.label12 = new System.Windows.Forms.Label();
@@ -80,17 +80,17 @@
             this.label9 = new System.Windows.Forms.Label();
             this.iItemCategory = new System.Windows.Forms.ComboBox();
             this.iIsWeight = new System.Windows.Forms.ComboBox();
-            this.uiItemIsWeight = new System.Windows.Forms.ComboBox();
-            this.uiItemCategory = new System.Windows.Forms.ComboBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.uiItemName = new System.Windows.Forms.ComboBox();
-            this.uiUpdate = new System.Windows.Forms.Button();
-            this.uiItemCode = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
             this.tpcProducts = new System.Windows.Forms.TabPage();
             this.uiDelete = new System.Windows.Forms.Button();
+            this.label18 = new System.Windows.Forms.Label();
+            this.uiItemCode = new System.Windows.Forms.TextBox();
+            this.uiUpdate = new System.Windows.Forms.Button();
+            this.uiItemName = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.uiItemCategory = new System.Windows.Forms.ComboBox();
+            this.uiItemIsWeight = new System.Windows.Forms.ComboBox();
             this.tpcStocks.SuspendLayout();
             this.tpcStock.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStocks)).BeginInit();
@@ -178,32 +178,32 @@
             this.dgvStocks.AllowUserToAddRows = false;
             this.dgvStocks.AllowUserToDeleteRows = false;
             this.dgvStocks.AllowUserToResizeRows = false;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(237)))), ((int)(((byte)(244)))));
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvStocks.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(237)))), ((int)(((byte)(244)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvStocks.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvStocks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvStocks.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStocks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStocks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvStocks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(216)))), ((int)(((byte)(232)))));
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvStocks.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(216)))), ((int)(((byte)(232)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvStocks.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvStocks.Location = new System.Drawing.Point(30, 108);
             this.dgvStocks.Name = "dgvStocks";
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvStocks.RowsDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvStocks.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvStocks.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvStocks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStocks.Size = new System.Drawing.Size(951, 471);
@@ -580,6 +580,7 @@
             this.miItemId.Name = "miItemId";
             this.miItemId.Size = new System.Drawing.Size(312, 29);
             this.miItemId.TabIndex = 18;
+            this.miItemId.TextChanged += new System.EventHandler(this.miItemId_TextChanged);
             // 
             // iItemName
             // 
@@ -671,105 +672,6 @@
             this.iIsWeight.Size = new System.Drawing.Size(312, 29);
             this.iIsWeight.TabIndex = 21;
             // 
-            // uiItemIsWeight
-            // 
-            this.uiItemIsWeight.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.uiItemIsWeight.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.uiItemIsWeight.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uiItemIsWeight.FormattingEnabled = true;
-            this.uiItemIsWeight.Items.AddRange(new object[] {
-            "True",
-            "False"});
-            this.uiItemIsWeight.Location = new System.Drawing.Point(154, 151);
-            this.uiItemIsWeight.Name = "uiItemIsWeight";
-            this.uiItemIsWeight.Size = new System.Drawing.Size(312, 29);
-            this.uiItemIsWeight.TabIndex = 32;
-            // 
-            // uiItemCategory
-            // 
-            this.uiItemCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.uiItemCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.uiItemCategory.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uiItemCategory.FormattingEnabled = true;
-            this.uiItemCategory.Location = new System.Drawing.Point(154, 116);
-            this.uiItemCategory.Name = "uiItemCategory";
-            this.uiItemCategory.Size = new System.Drawing.Size(312, 29);
-            this.uiItemCategory.TabIndex = 31;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(26, 81);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(87, 21);
-            this.label21.TabIndex = 38;
-            this.label21.Text = "Item Name";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(26, 119);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(108, 21);
-            this.label20.TabIndex = 37;
-            this.label20.Text = "Item Category";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(26, 154);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(74, 21);
-            this.label19.TabIndex = 36;
-            this.label19.Text = "is Weight";
-            // 
-            // uiItemName
-            // 
-            this.uiItemName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.uiItemName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.uiItemName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uiItemName.FormattingEnabled = true;
-            this.uiItemName.Location = new System.Drawing.Point(154, 78);
-            this.uiItemName.Name = "uiItemName";
-            this.uiItemName.Size = new System.Drawing.Size(312, 29);
-            this.uiItemName.TabIndex = 30;
-            this.uiItemName.SelectedIndexChanged += new System.EventHandler(this.uiItemName_SelectedIndexChanged);
-            // 
-            // uiUpdate
-            // 
-            this.uiUpdate.Enabled = false;
-            this.uiUpdate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uiUpdate.Location = new System.Drawing.Point(154, 203);
-            this.uiUpdate.Name = "uiUpdate";
-            this.uiUpdate.Size = new System.Drawing.Size(100, 73);
-            this.uiUpdate.TabIndex = 35;
-            this.uiUpdate.Text = "Update";
-            this.uiUpdate.UseVisualStyleBackColor = true;
-            this.uiUpdate.Click += new System.EventHandler(this.uiUpdate_Click);
-            // 
-            // uiItemCode
-            // 
-            this.uiItemCode.Enabled = false;
-            this.uiItemCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uiItemCode.Location = new System.Drawing.Point(154, 43);
-            this.uiItemCode.Name = "uiItemCode";
-            this.uiItemCode.Size = new System.Drawing.Size(312, 29);
-            this.uiItemCode.TabIndex = 29;
-            this.uiItemCode.TextChanged += new System.EventHandler(this.uiItemCode_TextChanged);
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(26, 46);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(78, 21);
-            this.label18.TabIndex = 39;
-            this.label18.Text = "Item code";
-            // 
             // tpcProducts
             // 
             this.tpcProducts.BackColor = System.Drawing.Color.White;
@@ -803,6 +705,106 @@
             this.uiDelete.Text = "Delete";
             this.uiDelete.UseVisualStyleBackColor = true;
             this.uiDelete.Click += new System.EventHandler(this.uiDelete_Click);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(26, 46);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(78, 21);
+            this.label18.TabIndex = 39;
+            this.label18.Text = "Item code";
+            // 
+            // uiItemCode
+            // 
+            this.uiItemCode.Enabled = false;
+            this.uiItemCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uiItemCode.Location = new System.Drawing.Point(154, 43);
+            this.uiItemCode.Name = "uiItemCode";
+            this.uiItemCode.Size = new System.Drawing.Size(312, 29);
+            this.uiItemCode.TabIndex = 29;
+            this.uiItemCode.TextChanged += new System.EventHandler(this.uiItemCode_TextChanged);
+            // 
+            // uiUpdate
+            // 
+            this.uiUpdate.Enabled = false;
+            this.uiUpdate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uiUpdate.Location = new System.Drawing.Point(154, 203);
+            this.uiUpdate.Name = "uiUpdate";
+            this.uiUpdate.Size = new System.Drawing.Size(100, 73);
+            this.uiUpdate.TabIndex = 35;
+            this.uiUpdate.Text = "Update";
+            this.uiUpdate.UseVisualStyleBackColor = true;
+            this.uiUpdate.Click += new System.EventHandler(this.uiUpdate_Click);
+            // 
+            // uiItemName
+            // 
+            this.uiItemName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.uiItemName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.uiItemName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uiItemName.FormattingEnabled = true;
+            this.uiItemName.Location = new System.Drawing.Point(154, 78);
+            this.uiItemName.Name = "uiItemName";
+            this.uiItemName.Size = new System.Drawing.Size(312, 29);
+            this.uiItemName.TabIndex = 30;
+            this.uiItemName.SelectedIndexChanged += new System.EventHandler(this.uiItemName_SelectedIndexChanged);
+            this.uiItemName.TextChanged += new System.EventHandler(this.uiItemName_TextChanged);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(26, 154);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(74, 21);
+            this.label19.TabIndex = 36;
+            this.label19.Text = "is Weight";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(26, 119);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(108, 21);
+            this.label20.TabIndex = 37;
+            this.label20.Text = "Item Category";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(26, 81);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(87, 21);
+            this.label21.TabIndex = 38;
+            this.label21.Text = "Item Name";
+            // 
+            // uiItemCategory
+            // 
+            this.uiItemCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.uiItemCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.uiItemCategory.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uiItemCategory.FormattingEnabled = true;
+            this.uiItemCategory.Location = new System.Drawing.Point(154, 116);
+            this.uiItemCategory.Name = "uiItemCategory";
+            this.uiItemCategory.Size = new System.Drawing.Size(312, 29);
+            this.uiItemCategory.TabIndex = 31;
+            // 
+            // uiItemIsWeight
+            // 
+            this.uiItemIsWeight.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.uiItemIsWeight.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.uiItemIsWeight.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uiItemIsWeight.FormattingEnabled = true;
+            this.uiItemIsWeight.Items.AddRange(new object[] {
+            "True",
+            "False"});
+            this.uiItemIsWeight.Location = new System.Drawing.Point(154, 151);
+            this.uiItemIsWeight.Name = "uiItemIsWeight";
+            this.uiItemIsWeight.Size = new System.Drawing.Size(312, 29);
+            this.uiItemIsWeight.TabIndex = 32;
             // 
             // StockManagement
             // 

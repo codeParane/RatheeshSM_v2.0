@@ -49,6 +49,9 @@
             this.lblGross = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblDiscount = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboItemImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCurrentBill)).BeginInit();
@@ -245,6 +248,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.label8);
+            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.lblGross);
             this.groupBox2.Controls.Add(this.lblTotal);
             this.groupBox2.Controls.Add(this.lblDiscount);
@@ -260,7 +266,7 @@
             // 
             this.lblGross.AutoSize = true;
             this.lblGross.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGross.Location = new System.Drawing.Point(74, 49);
+            this.lblGross.Location = new System.Drawing.Point(100, 40);
             this.lblGross.Name = "lblGross";
             this.lblGross.Size = new System.Drawing.Size(41, 21);
             this.lblGross.TabIndex = 1;
@@ -270,7 +276,7 @@
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(74, 115);
+            this.lblTotal.Location = new System.Drawing.Point(100, 114);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(41, 21);
             this.lblTotal.TabIndex = 1;
@@ -280,11 +286,38 @@
             // 
             this.lblDiscount.AutoSize = true;
             this.lblDiscount.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiscount.Location = new System.Drawing.Point(74, 82);
+            this.lblDiscount.Location = new System.Drawing.Point(100, 82);
             this.lblDiscount.Name = "lblDiscount";
             this.lblDiscount.Size = new System.Drawing.Size(41, 21);
             this.lblDiscount.TabIndex = 1;
             this.lblDiscount.Text = "0.00";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 46);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(59, 25);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Gross";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 76);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(88, 25);
+            this.label8.TabIndex = 3;
+            this.label8.Text = "Discount";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 111);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(44, 25);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "Net";
             // 
             // SalesRegister
             // 
@@ -337,5 +370,8 @@
         private System.Windows.Forms.TextBox txtItemCode;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label lblDiscount;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label5;
     }
 }

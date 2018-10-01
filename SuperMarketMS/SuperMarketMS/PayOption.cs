@@ -123,6 +123,7 @@ namespace SuperMarketMS
                         comp = Math.Round(decimal.Parse(dr_getProduct["cmp"].ToString()), 2);
                     }
                 }
+                decimal revenue = Math.Round(decimal.Parse(dr_getProduct["net"].ToString()) - comp, 2);
             }
         }
 
@@ -543,6 +544,11 @@ namespace SuperMarketMS
         private void loanSettle_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar) && (e.KeyChar != '.');
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

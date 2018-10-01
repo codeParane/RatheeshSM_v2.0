@@ -751,7 +751,15 @@ namespace SuperMarketMS
 
         private void iItemName_TextChanged(object sender, EventArgs e)
         {
+            itemTextChanged();
 
+
+
+        }
+
+        public void itemTextChanged()
+        {
+            miItemId.Clear();
             iItemCategory.Text = "-SELECT-";
             dbconn.CloseConnection();
             dbconn.OpenConnection();
@@ -770,7 +778,6 @@ namespace SuperMarketMS
                 miItemId.Text = itemId.ToString();
 
             }
-
         }
 
         private void button4_Click_2(object sender, EventArgs e)
@@ -780,41 +787,35 @@ namespace SuperMarketMS
 
         private void iItemName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            iItemCategory.Text = "-SELECT-";
-            dbconn.CloseConnection();
-            dbconn.OpenConnection();
-            string itemId = "";
-            MySqlCommand cmd = new MySqlCommand("SELECT id, category FROM items WHERE iname='" + iItemName.Text + "'", dbconn.connection);
-            dbconn.CloseConnection();
-            dbconn.OpenConnection();
-            MySqlDataReader reader = cmd.ExecuteReader();
-            if (reader.HasRows)
-            {
-                while (reader.Read())
-                {
-                    itemId = reader.GetString(0);
-                    iItemCategory.Text = reader.GetString(1);
-                }
-                miItemId.Text = itemId.ToString();
-            }
-
+            itemTextChanged();
         }
 
         private void uiItemCode_TextChanged(object sender, EventArgs e)
         {
-            if(uiItemCode.Text != "" && uiItemCode.Text != null)
+            uiUpdate.Enabled = false;
+            uiDelete.Enabled = false;
+            if (uiItemCode.Text != "" && uiItemCode.Text != null)
             {
                 uiUpdate.Enabled = true;
+                uiDelete.Enabled = true;
             }
         }
 
         private void uiItemName_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            updateItemTextChanged();
+        }
+
+        public void updateItemTextChanged()
+        {
+            
             uiItemCategory.Text = "-SELECT-";
             dbconn.CloseConnection();
             dbconn.OpenConnection();
             string itemId = "";
-            MySqlCommand cmd = new MySqlCommand("SELECT id, category FROM items WHERE iname='" + uiItemName.Text + 
+            string itemCat ="";
+            MySqlCommand cmd = new MySqlCommand("SELECT id, category FROM items WHERE iname='" + uiItemName.Text +
                 "'", dbconn.connection);
             dbconn.CloseConnection();
             dbconn.OpenConnection();
@@ -824,12 +825,14 @@ namespace SuperMarketMS
                 while (reader.Read())
                 {
                     itemId = reader.GetString(0);
-                    uiItemCategory.Text = reader.GetString(1);
+                    uiItemCode.Clear();
+                    itemCat = reader.GetString(1);
                 }
                 uiItemCode.Text = itemId.ToString();
+                uiItemCategory.Text = itemCat.ToString();
                 uiUpdate.Enabled = true;
+                uiDelete.Enabled = true;
             }
-
         }
 
         private void uiUpdate_Click(object sender, EventArgs e)
@@ -862,6 +865,20 @@ namespace SuperMarketMS
                     MessageBox.Show("Item Deleted!!!");
                 }
             }
+        }
+
+        private void miItemId_TextChanged(object sender, EventArgs e)
+        {
+            miUpdateAdd.Enabled = true;
+            if(miItemId.Text != null && miItemId.Text != "")
+            {
+                miUpdateAdd.Enabled = false;
+            }
+        }
+
+        private void uiItemName_TextChanged(object sender, EventArgs e)
+        {
+            updateItemTextChanged();
         }
     }
 }

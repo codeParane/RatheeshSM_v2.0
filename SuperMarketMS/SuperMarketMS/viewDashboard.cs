@@ -29,11 +29,7 @@ namespace SuperMarketMS
         }
         public void loadExpireGrid() {
 
-            dgvLowStocks.Rows.Clear();
-            dgvLowStocks.Refresh();
-
-            dgvNearExpiry.Rows.Clear();
-            dgvNearExpiry.Refresh();
+           
 
 
             dbconn.CloseConnection();
