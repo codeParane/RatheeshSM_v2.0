@@ -41,13 +41,19 @@ namespace SuperMarketMS
             {
                 while (dr_getProduct.Read())
                 {
-                    if (dr_getProduct["amount"] != null)
+                    if (dr_getProduct["amount"] != null && dr_getProduct["revenue"] != null && dr_getProduct["revenue"].ToString() != "" && dr_getProduct["revenue"].ToString() != "" )
                     {
                         csTotalRevenue.Text = decimal.Parse(dr_getProduct["revenue"].ToString()).ToString();
                         csTotalSales.Text = decimal.Parse(dr_getProduct["amount"].ToString()).ToString();
                     }
                 }
             }
+            
+        }
+
+        private void CashDeals_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

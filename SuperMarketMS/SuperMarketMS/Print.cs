@@ -47,7 +47,8 @@ namespace SuperMarketMS
 
         private void button2_Click(object sender, EventArgs e)
         {
-            textBox1.Text = String.Format("{0:#,0.000}", 12);
+            //textBox1.Text = String.Format("{0:#,0.000}", 12);
+            MessageBox.Show(DateTime.Now.ToString("yyMMddhhmmssMs"));
         }
     }
 }

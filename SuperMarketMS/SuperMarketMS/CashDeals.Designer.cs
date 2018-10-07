@@ -164,6 +164,7 @@
             this.Name = "CashDeals";
             this.Text = "CashDeals";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.CashDeals_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvStocks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

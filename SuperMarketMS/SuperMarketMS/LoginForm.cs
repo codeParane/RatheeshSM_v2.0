@@ -83,7 +83,7 @@ namespace SuperMarketMS
                 {
                     //MessageBox.Show("Success!!");
                     loggedUser = txtUserName.Text;
-
+                    deleteOldbills();
                     this.Hide();
                     DashBoard mainForm = new DashBoard();
                     mainForm.Show();
@@ -104,6 +104,19 @@ namespace SuperMarketMS
         private void button1_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        public void deleteOldbills()
+        {
+            dbconn.CloseConnection();
+            dbconn.OpenConnection();
+            string qAddToBill = "delete from storedbills where buydate < '"+ 
+                DateTime.Now.AddDays(3).ToString("yyyy-MM-ddd")  +"'";
+            MySqlCommand cAddToBill = new MySqlCommand(qAddToBill, dbconn.connection);
+            int queryAffected = cAddToBill.ExecuteNonQuery();
+            if (queryAffected > 0)
+            {
+            }
         }
 
     }
