@@ -134,7 +134,15 @@ namespace SuperMarketMS
                 this.Close();
             }else if (e.KeyCode == Keys.Enter)
             {
-                finalSale("cash");
+                DialogResult dialogResult = MessageBox.Show("Do You Want Print Bill?", "Confirm", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    finalSale("cash", true);
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    finalSale("cash", false);
+                }
             }
         }
 
@@ -145,7 +153,16 @@ namespace SuperMarketMS
 
         private void button1_Click(object sender, EventArgs e)
         {
-            finalSale("cash");
+            DialogResult dialogResult = MessageBox.Show("Do You Want Print Bill?", "Confirm", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                finalSale("cash", true);
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                finalSale("cash", false);
+            }
+           
         }
 
        
@@ -241,7 +258,7 @@ namespace SuperMarketMS
 
 
 
-        public void finalSale(string payType)
+        public void finalSale(string payType, Boolean isPrint)
         {
 
             string printString = "";
@@ -453,19 +470,39 @@ namespace SuperMarketMS
                     new RectangleF(0, 80, p.DefaultPageSettings.PrintableArea.Width,
                     p.DefaultPageSettings.PrintableArea.Height));
             };
-            p.Print();
+            if (isPrint)
+            {
+                p.Print();
+            }
+           
             this.Close();
 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            finalSale("card");
+            DialogResult dialogResult = MessageBox.Show("Do You Want Print Bill?", "Confirm", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                finalSale("card", true);
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                finalSale("card", false);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            finalSale("loan");
+            DialogResult dialogResult = MessageBox.Show("Do You Want Print Bill?", "Confirm", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                finalSale("loan", true);
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                finalSale("loan", false);
+            }
             dbconn.CloseConnection();
             dbconn.OpenConnection();
             string qAddToBill = "UPDATE customers SET loan= loan + " + poTotalBill.Text +

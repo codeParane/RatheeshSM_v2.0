@@ -529,7 +529,8 @@ namespace SuperMarketMS
                 reader.Close();
                 string qAddToBill = "UPDATE stocks SET itemid='" + itemId + "', companyPrice=" + companyPrice + ", sellingPrice = " +
                     sellingPrice + ", discount = " + discountP + ", qty = " + quantity + ", expiry= '" + expiryDate +
-                    "' WHERE barcode = '" + barcode + "';";
+                    "' WHERE barcode = '" + barcode + "';insert into purchased values("+ itemId +","+
+                    quantity +",'"+ DateTime.Now.ToString("yyyy-MM-dd") +"')";
                 MySqlCommand cAddToBill = new MySqlCommand(qAddToBill, dbconn.connection);
                 int queryAffected = cAddToBill.ExecuteNonQuery();
                 if (queryAffected > 0)
