@@ -152,9 +152,17 @@ namespace SuperMarketMS
 
         private void txtItemName_TextChanged(object sender, EventArgs e)
         {
-           
+            if(txtItemName.Text != "" && txtItemName.Text != null)
+            {
+                txtQty.Focus();
+            }
+            else
+            {
+                txtItemCode.Focus();
+            }
+                   
         }
-
+        
         private void txtQty_Leave(object sender, EventArgs e)
         {
             if(txtQty.Text == null || txtQty.Text == "")

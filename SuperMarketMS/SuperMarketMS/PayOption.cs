@@ -315,19 +315,14 @@ namespace SuperMarketMS
 
                     dbconn.CloseConnection();
                     dbconn.OpenConnection();
-                    string qAddToBill = "insert into storedbills values("+ billId +","
-                        + DateTime.Now.ToString("yyyy-MM-dd") +","+ barCode +",'"+ itemName +"',"
-                        + qty +","+ net +")";
+                    string qAddToBill = "insert into storedbills values('"+ billId +"',"
+                        + barCode +", '"+ itemName +"'," + qty +","+ net +",'" + DateTime.Now.ToString("yyyy-MM-dd") + "')";
                     MySqlCommand cAddToBill = new MySqlCommand(qAddToBill, dbconn.connection);
                     int queryAffected = cAddToBill.ExecuteNonQuery();
                     if (queryAffected > 0)
                     {
                     }
-
-
-
-
-
+                    
 
                     itemList += "\n   " + num + " - " + itemName;
                     itemList += "\n                 " + String.Format("{0:#,0.000}", qty) + "\t" + String.Format("{0:N}", rate) + "\t" +
@@ -454,8 +449,7 @@ namespace SuperMarketMS
                 "\n             the item & bill within 3 days to" +
                 "\n                  refund the difference." +
                 "\n        <<<<  Thank You, Come Again... >>>>";
-
-
+            
             printString += title2;
             printString += title;
             printString += itemList;
@@ -470,6 +464,7 @@ namespace SuperMarketMS
                     new RectangleF(0, 80, p.DefaultPageSettings.PrintableArea.Width,
                     p.DefaultPageSettings.PrintableArea.Height));
             };
+
             if (isPrint)
             {
                 p.Print();
