@@ -126,6 +126,7 @@ namespace SuperMarketMS
                     }
                     bool n = File.Exists(@"D:\Resources\ItemImage\" + id + ".jpg")? true : false;
                     pboItemImage.Image = n ? Image.FromFile(@"D:\Resources\ItemImage\" + id + ".jpg") : Image.FromFile(@"D:\Resources\ItemImage\default.png");
+                    txtQty.Focus();
                 }
             }
         }
