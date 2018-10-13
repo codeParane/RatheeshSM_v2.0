@@ -120,10 +120,14 @@ namespace SuperMarketMS
                         poGross.Text = (decimal.Parse(dr_getProduct["dis"].ToString()) + decimal.Parse(dr_getProduct["net"].ToString())).ToString();
                         poItemSavings.Text = dr_getProduct["dis"].ToString();
                         poTotalBill.Text = dr_getProduct["net"].ToString();
-                        comp = Math.Round(decimal.Parse(dr_getProduct["cmp"].ToString()), 2);
+                        totCmpPrice.Text= dr_getProduct["cmp"].ToString();
+                        
+                        comp = Math.Round(decimal.Parse(totCmpPrice.Text), 2);
                     }
                 }
                 decimal revenue = Math.Round(decimal.Parse(dr_getProduct["net"].ToString()) - comp, 2);
+                txtRevenue.Text = revenue.ToString();
+                poCash.Text = poTotalBill.Text;
             }
         }
 
@@ -287,66 +291,59 @@ namespace SuperMarketMS
                 "\n No Item Qty\t Price \t Dis\t Amount" +
                 "\n----------------------------------------------------------";
 
-
-            dbconn.CloseConnection();
-            dbconn.OpenConnection();
-            string qr_getProducta = "select itemcode, itemname, qty, rate, disa, net, cmprice from currentbill;";
-            MySqlCommand cm_getProducta = new MySqlCommand(qr_getProducta, dbconn.connection);
-            MySqlDataReader dr_getProducta = cm_getProducta.ExecuteReader();
-
-            String billId = DateTime.Now.ToString("yyMMddhhmmssMs");
+            string billId = DateTime.Now.ToString("yyMMddhhmmssMs");
 
             //ItemList
             string itemList = "";
-            if (dr_getProducta.HasRows == true)
-            {
-                int num = 1;
-                while (dr_getProducta.Read())
-                {
-                    string barCode = dr_getProducta["itemcode"].ToString();
-                    string itemName = dr_getProducta["itemname"].ToString();
-                    decimal qty = Math.Round(decimal.Parse(dr_getProducta["qty"].ToString()), 3);
-                    decimal rate = Math.Round(decimal.Parse(dr_getProducta["rate"].ToString()), 2);
-                    decimal dis = Math.Round(decimal.Parse(dr_getProducta["disa"].ToString()), 2);
-                    decimal net = Math.Round(decimal.Parse(dr_getProducta["net"].ToString()), 2);
+            //string qGetStocks = "select itemcode, itemname, qty, rate, disa, net, cmprice from currentbill; ";
 
-                        
+            int num = 1;
+            foreach (DataGridViewRow row in dgvFinalStocks.Rows)
+            {
+                if (row.Cells[0].Value != null && row.Cells[0].Value.ToString() != "" )
+                {
+                    string barCode = row.Cells[0].Value.ToString();
+                    string itemName = row.Cells[1].Value.ToString();
+                    decimal qty = Math.Round(decimal.Parse(row.Cells[2].Value.ToString()), 3);
+                    decimal rate = Math.Round(decimal.Parse(row.Cells[3].Value.ToString()), 2);
+                    decimal dis = Math.Round(decimal.Parse(row.Cells[4].Value.ToString()), 2);
+                    decimal net = Math.Round(decimal.Parse(row.Cells[5].Value.ToString()), 2);
+
+
                     decimal qtyValue = qty;
 
-                    dbconn.CloseConnection();
-                    dbconn.OpenConnection();
-                    string qAddToBill = "insert into storedbills values('"+ billId +"',"
-                        + barCode +", '"+ itemName +"'," + qty +","+ net +",'" + DateTime.Now.ToString("yyyy-MM-dd") + "')";
-                    MySqlCommand cAddToBill = new MySqlCommand(qAddToBill, dbconn.connection);
-                    int queryAffected = cAddToBill.ExecuteNonQuery();
-                    if (queryAffected > 0)
-                    {
-                    }
-                    
-
-                    itemList += "\n   " + num + " - " + itemName;
-                    itemList += "\n                 " + String.Format("{0:#,0.000}", qty) + "\t" + String.Format("{0:N}", rate) + "\t" +
-                        String.Format("{0:N}", dis) + "\t" + String.Format("{0:N}", net);
-                    num++;
-                }
+            dbconn.CloseConnection();
+            dbconn.OpenConnection();
+            string qAddToBill = "insert into storedbills values('" + billId + "',"
+                + barCode + ", '" + itemName + "'," + qty + "," + net + ",'" + DateTime.Now.ToString("yyyy-MM-dd") + "')";
+            MySqlCommand cAddToBill = new MySqlCommand(qAddToBill, dbconn.connection);
+            int queryAffected = cAddToBill.ExecuteNonQuery();
+            if (queryAffected > 0)
+            {
             }
 
 
-            for(int i =0; i < dgvFinalStocks.RowCount; i++)
-            {
-                string barCode = dgvFinalStocks.Rows[0].Cells[0].Value.ToString();
-                decimal qty = decimal.Parse(dgvFinalStocks.Rows[0].Cells[2].Value.ToString());
+            itemList += "\n   " + num + " - " + itemName;
+            itemList += "\n                 " + String.Format("{0:#,0.000}", qty) + "\t" + String.Format("{0:N}", rate) + "\t" +
+                String.Format("{0:N}", dis) + "\t" + String.Format("{0:N}", net);
+            num++;
+        }
+    }
 
-                dbconn.CloseConnection();
-                dbconn.OpenConnection();
-                string qAddToBill = "update stocks set qty=qty-" + qty + " where barcode='" + barCode + "';";
-                MySqlCommand cAddToBill = new MySqlCommand(qAddToBill, dbconn.connection);
-                int queryAffected = cAddToBill.ExecuteNonQuery();
-                if (queryAffected > 0)
+            foreach (DataGridViewRow row in dgvFinalStocks.Rows)
+            {
+                if (row.Cells[0].Value != null && row.Cells[0].Value.ToString() != "")
                 {
+                    string barCode = row.Cells[0].Value.ToString();
+                    decimal qty = decimal.Parse(row.Cells[2].Value.ToString());
+
+                    dbconn.CloseConnection();
+                    dbconn.OpenConnection();
+                    string qAddToBill = "update stocks set qty=qty-" + qty + " where barcode='" + barCode + "';";
+                    MySqlCommand cAddToBill = new MySqlCommand(qAddToBill, dbconn.connection);
+                    int queryAffected = cAddToBill.ExecuteNonQuery();
 
                 }
-
             }
             string payTypeBill = "";
           
@@ -359,7 +356,7 @@ namespace SuperMarketMS
                 dbconn.CloseConnection();
                 dbconn.OpenConnection();
                 string qAddToBill1 = "INSERT INTO sales(billId, billDate, amount, revenue, payType)  VALUES ('" 
-                    + billId + "'," + poTotalBill.Text + "," + revenue + ", 'cash');delete from currentbill;";
+                    + billId + "','"+ DateTime.Now.ToString("yyyy-MM-dd") +"'," + poTotalBill.Text + "," + revenue + ", 'cash');delete from currentbill;";
                 MySqlCommand cAddToBill1 = new MySqlCommand(qAddToBill1, dbconn.connection);
                 int queryAffected1 = cAddToBill1.ExecuteNonQuery();
 
@@ -374,7 +371,7 @@ namespace SuperMarketMS
                 dbconn.CloseConnection();
                 dbconn.OpenConnection();
                 string qAddToBill1 = "INSERT INTO sales(billId, billDate, amount, revenue, payType)  VALUES ('" 
-                    + billId + "'," + poTotalBill.Text + "," + revenue + ", 'card');delete from currentbill;";
+                    + billId + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "'," + poTotalBill.Text + "," + revenue + ", 'card');delete from currentbill;";
                 MySqlCommand cAddToBill1 = new MySqlCommand(qAddToBill1, dbconn.connection);
                 int queryAffected1 = cAddToBill1.ExecuteNonQuery();
 
@@ -389,7 +386,7 @@ namespace SuperMarketMS
                 dbconn.CloseConnection();
                 dbconn.OpenConnection();
                 string qAddToBill1 = "INSERT INTO sales(billId, billDate, amount, revenue, payType)  VALUES ('"
-                    + billId + "'," + poTotalBill.Text + "," + revenue + ", 'loan');delete from currentbill;";
+                    + billId + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "'," + poTotalBill.Text + "," + revenue + ", 'loan');delete from currentbill;";
                 MySqlCommand cAddToBill1 = new MySqlCommand(qAddToBill1, dbconn.connection);
                 int queryAffected1 = cAddToBill1.ExecuteNonQuery();
 
@@ -452,7 +449,7 @@ namespace SuperMarketMS
             
             printString += title2;
             printString += title;
-            printString += itemList;
+            //printString += itemList;
             printString += totalBill;
             printString += payTypeBill;
             printString += bestBuy;
@@ -573,11 +570,13 @@ namespace SuperMarketMS
 
         private void poTotalBill_TextChanged(object sender, EventArgs e)
         {
+            poCash.Text = poTotalBill.Text;
             if(cmbLoanAccount.Text != "-SELECT-" && cmbLoanName.Text != "-SELECT-")
             {
                 loanUpdateCre.Text = (decimal.Parse(loanAmount.Text) + decimal.Parse(poTotalBill.Text) - 
                     decimal.Parse(loanSettle.Text)).ToString();
             }
+            
         }
 
         private void loanSettle_TextChanged(object sender, EventArgs e)

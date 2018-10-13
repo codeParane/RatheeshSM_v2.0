@@ -62,6 +62,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.txtRevenue = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.totCmpPrice = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFinalStocks)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,7 +103,7 @@
             // poBillDiscount
             // 
             this.poBillDiscount.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.poBillDiscount.Location = new System.Drawing.Point(169, 208);
+            this.poBillDiscount.Location = new System.Drawing.Point(169, 348);
             this.poBillDiscount.Name = "poBillDiscount";
             this.poBillDiscount.Size = new System.Drawing.Size(140, 29);
             this.poBillDiscount.TabIndex = 1;
@@ -115,7 +117,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(21, 211);
+            this.label1.Location = new System.Drawing.Point(21, 351);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(132, 21);
             this.label1.TabIndex = 3;
@@ -125,7 +127,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(96, 246);
+            this.label2.Location = new System.Drawing.Point(96, 386);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(23, 21);
             this.label2.TabIndex = 5;
@@ -135,7 +137,7 @@
             // 
             this.poBillDisPer.Enabled = false;
             this.poBillDisPer.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.poBillDisPer.Location = new System.Drawing.Point(125, 243);
+            this.poBillDisPer.Location = new System.Drawing.Point(125, 383);
             this.poBillDisPer.Name = "poBillDisPer";
             this.poBillDisPer.Size = new System.Drawing.Size(51, 29);
             this.poBillDisPer.TabIndex = 4;
@@ -146,7 +148,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(182, 246);
+            this.label3.Location = new System.Drawing.Point(182, 386);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(27, 21);
             this.label3.TabIndex = 7;
@@ -156,7 +158,7 @@
             // 
             this.poBillDisCash.Enabled = false;
             this.poBillDisCash.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.poBillDisCash.Location = new System.Drawing.Point(215, 243);
+            this.poBillDisCash.Location = new System.Drawing.Point(215, 383);
             this.poBillDisCash.Name = "poBillDisCash";
             this.poBillDisCash.Size = new System.Drawing.Size(94, 29);
             this.poBillDisCash.TabIndex = 6;
@@ -239,7 +241,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(21, 281);
+            this.label7.Location = new System.Drawing.Point(21, 421);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(67, 21);
             this.label7.TabIndex = 16;
@@ -249,7 +251,7 @@
             // 
             this.poTotalBill.Enabled = false;
             this.poTotalBill.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.poTotalBill.Location = new System.Drawing.Point(169, 278);
+            this.poTotalBill.Location = new System.Drawing.Point(169, 418);
             this.poTotalBill.Name = "poTotalBill";
             this.poTotalBill.Size = new System.Drawing.Size(140, 29);
             this.poTotalBill.TabIndex = 15;
@@ -437,7 +439,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(21, 141);
+            this.label15.Location = new System.Drawing.Point(21, 176);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(70, 21);
             this.label15.TabIndex = 32;
@@ -448,18 +450,41 @@
             // 
             this.txtRevenue.Enabled = false;
             this.txtRevenue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRevenue.Location = new System.Drawing.Point(169, 138);
+            this.txtRevenue.Location = new System.Drawing.Point(169, 173);
             this.txtRevenue.Name = "txtRevenue";
             this.txtRevenue.Size = new System.Drawing.Size(140, 29);
             this.txtRevenue.TabIndex = 31;
             this.txtRevenue.Text = "0";
             this.txtRevenue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(21, 141);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(126, 21);
+            this.label16.TabIndex = 34;
+            this.label16.Text = "Total Comp Price";
+            // 
+            // totCmpPrice
+            // 
+            this.totCmpPrice.Enabled = false;
+            this.totCmpPrice.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totCmpPrice.Location = new System.Drawing.Point(169, 138);
+            this.totCmpPrice.Name = "totCmpPrice";
+            this.totCmpPrice.Size = new System.Drawing.Size(140, 29);
+            this.totCmpPrice.TabIndex = 33;
+            this.totCmpPrice.Text = "0";
+            this.totCmpPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // PayOption
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(699, 507);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.totCmpPrice);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.txtRevenue);
             this.Controls.Add(this.loanUpdateCre);
@@ -542,5 +567,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtRevenue;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox totCmpPrice;
     }
 }

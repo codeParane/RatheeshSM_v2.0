@@ -170,7 +170,7 @@ namespace SuperMarketMS
                 txtQty.Text = "0";
             }
 
-            if (txtItemName.Text != "" && txtQty.Text != "" && txtItemCode.Text != "")
+            if (txtItemName.Text != "" && txtQty.Text != "" && txtItemCode.Text != "" && txtQty.Text != null && txtQty.Text != "0")
             {
                 if(decimal.Parse(txtQty.Text) > 0)
                 {
