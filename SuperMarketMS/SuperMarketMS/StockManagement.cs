@@ -811,6 +811,7 @@ namespace SuperMarketMS
         public void updateItemTextChanged()
         {
             
+
             uiItemCategory.Text = "-SELECT-";
             dbconn.CloseConnection();
             dbconn.OpenConnection();
