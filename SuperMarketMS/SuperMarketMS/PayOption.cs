@@ -449,7 +449,7 @@ namespace SuperMarketMS
             
             printString += title2;
             printString += title;
-            //printString += itemList;
+            printString += itemList;
             printString += totalBill;
             printString += payTypeBill;
             printString += bestBuy;

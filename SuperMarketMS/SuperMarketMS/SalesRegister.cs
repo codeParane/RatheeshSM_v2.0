@@ -93,7 +93,7 @@ namespace SuperMarketMS
                 dbconn.OpenConnection();
                 string qr_getProduct = "SELECT i.id AS id, i.iname AS name,i.weight as isWeight, "+
                     "s.companyprice AS cmpprice,s.sellingprice as selprice, s.discount AS discount, s.qty FROM" +
-                    " stocks AS s JOIN items AS i ON s.itemid = i.id WHERE s.barcode = '" + barCode + "';";
+                    " stocks AS s JOIN items AS i ON s.itemid = i.id WHERE s.barcode = '" + barCode + "' && s.qty > 0;";
                 MySqlCommand cm_getProduct = new MySqlCommand(qr_getProduct, dbconn.connection);
                     MySqlDataReader dr_getProduct = cm_getProduct.ExecuteReader();
 
