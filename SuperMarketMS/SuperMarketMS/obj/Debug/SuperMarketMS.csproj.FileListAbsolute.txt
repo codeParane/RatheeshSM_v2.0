@@ -86,3 +86,4 @@ D:\WorkBench\Projects\RatheeshSM_v2.0\SuperMarketMS\SuperMarketMS\obj\Debug\Supe
 D:\WorkBench\Projects\RatheeshSM_v2.0\SuperMarketMS\SuperMarketMS\obj\Debug\SuperMarketMS.StockManagement.resources
 D:\WorkBench\Projects\RatheeshSM_v2.0\SuperMarketMS\SuperMarketMS\obj\Debug\SuperMarketMS.viewDashboard.resources
 D:\WorkBench\Projects\RatheeshSM_v2.0\SuperMarketMS\SuperMarketMS\obj\Debug\SuperMarketMS.csproj.GenerateResource.Cache
+D:\WorkBench\Projects\RatheeshSM_v2.0\SuperMarketMS\SuperMarketMS\obj\Debug\SuperMarketMS.BillManagement.resources

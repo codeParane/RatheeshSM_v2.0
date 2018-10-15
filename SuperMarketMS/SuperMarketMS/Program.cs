@@ -16,7 +16,7 @@ namespace SuperMarketMS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new StockManagement());
+            Application.Run(new LoginForm());
         }
     }
 }

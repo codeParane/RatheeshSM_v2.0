@@ -115,13 +115,13 @@ namespace SuperMarketMS
             {
                 while (dr_getProduct.Read())
                 {
-                    if(dr_getProduct["dis"] != null)
+                    if (dr_getProduct["dis"] != null)
                     {
                         poGross.Text = (decimal.Parse(dr_getProduct["dis"].ToString()) + decimal.Parse(dr_getProduct["net"].ToString())).ToString();
                         poItemSavings.Text = dr_getProduct["dis"].ToString();
                         poTotalBill.Text = dr_getProduct["net"].ToString();
-                        totCmpPrice.Text= dr_getProduct["cmp"].ToString();
-                        
+                        totCmpPrice.Text = dr_getProduct["cmp"].ToString();
+
                         comp = Math.Round(decimal.Parse(totCmpPrice.Text), 2);
                     }
                 }
@@ -136,7 +136,7 @@ namespace SuperMarketMS
             if (e.KeyCode == Keys.Escape)
             {
                 this.Close();
-            }else if (e.KeyCode == Keys.Enter)
+            } else if (e.KeyCode == Keys.Enter)
             {
                 DialogResult dialogResult = MessageBox.Show("Do You Want Print Bill?", "Confirm", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
@@ -166,10 +166,10 @@ namespace SuperMarketMS
             {
                 finalSale("cash", false);
             }
-           
+
         }
 
-       
+
 
         private void poCash_TextChanged(object sender, EventArgs e)
         {
@@ -231,7 +231,7 @@ namespace SuperMarketMS
                 }
             }
 
-            if (poCash.Text != "0" && poCash.Text != "" && poCash.Text  != null)
+            if (poCash.Text != "0" && poCash.Text != "" && poCash.Text != null)
             {
                 poBalance.Text = Math.Round(decimal.Parse(poCash.Text) - decimal.Parse(poTotalBill.Text), 2).ToString();
 
@@ -254,7 +254,7 @@ namespace SuperMarketMS
 
         private void poBillDiscount_Leave(object sender, EventArgs e)
         {
-            if(poBillDiscount.Text == "")
+            if (poBillDiscount.Text == "")
             {
                 poBillDiscount.Text = "0";
             }
@@ -300,7 +300,7 @@ namespace SuperMarketMS
             int num = 1;
             foreach (DataGridViewRow row in dgvFinalStocks.Rows)
             {
-                if (row.Cells[0].Value != null && row.Cells[0].Value.ToString() != "" )
+                if (row.Cells[0].Value != null && row.Cells[0].Value.ToString() != "")
                 {
                     string barCode = row.Cells[0].Value.ToString();
                     string itemName = row.Cells[1].Value.ToString();
@@ -312,23 +312,23 @@ namespace SuperMarketMS
 
                     decimal qtyValue = qty;
 
-            dbconn.CloseConnection();
-            dbconn.OpenConnection();
-            string qAddToBill = "insert into storedbills values('" + billId + "',"
-                + barCode + ", '" + itemName + "'," + qty + "," + net + ",'" + DateTime.Now.ToString("yyyy-MM-dd") + "')";
-            MySqlCommand cAddToBill = new MySqlCommand(qAddToBill, dbconn.connection);
-            int queryAffected = cAddToBill.ExecuteNonQuery();
-            if (queryAffected > 0)
-            {
+                    dbconn.CloseConnection();
+                    dbconn.OpenConnection();
+                    string qAddToBill = "insert into storedbills values('" + billId + "',"
+                        + barCode + ", '" + itemName + "'," + qty + "," + net + ",'" + DateTime.Now.ToString("yyyy-MM-dd") + "')";
+                    MySqlCommand cAddToBill = new MySqlCommand(qAddToBill, dbconn.connection);
+                    int queryAffected = cAddToBill.ExecuteNonQuery();
+                    if (queryAffected > 0)
+                    {
+                    }
+
+
+                    itemList += "\n   " + num + " - " + itemName;
+                    itemList += "\n                 " + String.Format("{0:#,0.000}", qty) + "\t" + String.Format("{0:N}", rate) + "\t" +
+                        String.Format("{0:N}", dis) + "\t" + String.Format("{0:N}", net);
+                    num++;
+                }
             }
-
-
-            itemList += "\n   " + num + " - " + itemName;
-            itemList += "\n                 " + String.Format("{0:#,0.000}", qty) + "\t" + String.Format("{0:N}", rate) + "\t" +
-                String.Format("{0:N}", dis) + "\t" + String.Format("{0:N}", net);
-            num++;
-        }
-    }
 
             foreach (DataGridViewRow row in dgvFinalStocks.Rows)
             {
@@ -346,8 +346,8 @@ namespace SuperMarketMS
                 }
             }
             string payTypeBill = "";
-          
-         
+
+
 
 
             if (payType == "cash")
@@ -355,13 +355,18 @@ namespace SuperMarketMS
                 decimal revenue = Math.Round(decimal.Parse(poTotalBill.Text) - comp, 2);
                 dbconn.CloseConnection();
                 dbconn.OpenConnection();
-                string qAddToBill1 = "INSERT INTO sales(billId, billDate, amount, revenue, payType)  VALUES ('" 
-                    + billId + "','"+ DateTime.Now.ToString("yyyy-MM-dd") +"'," + poTotalBill.Text + "," + revenue + ", 'cash');delete from currentbill;";
+                string qAddToBill1 = "INSERT INTO sales(billId, billDate, amount, revenue, payType)  VALUES ('"
+                    + billId + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "'," + poTotalBill.Text + "," + revenue + ", 'cash');delete from currentbill;";
                 MySqlCommand cAddToBill1 = new MySqlCommand(qAddToBill1, dbconn.connection);
                 int queryAffected1 = cAddToBill1.ExecuteNonQuery();
 
+                if (poCash.Text == null || poCash.Text == "")
+                {
+                    poCash.Text = poTotalBill.Text;
+                }
+
                 payTypeBill =
-                    "\n\t\tPaid By\t: Cash   " + 
+                    "\n\t\tPaid By\t: Cash   " +
                     "\n\t\tCash\t: " + String.Format("{0:N}", decimal.Parse(poCash.Text)) +
                     "\n\t\tBalance\t: " + String.Format("{0:N}", decimal.Parse(poBalance.Text));
             }
@@ -370,13 +375,13 @@ namespace SuperMarketMS
                 decimal revenue = Math.Round(decimal.Parse(poTotalBill.Text) - comp, 2);
                 dbconn.CloseConnection();
                 dbconn.OpenConnection();
-                string qAddToBill1 = "INSERT INTO sales(billId, billDate, amount, revenue, payType)  VALUES ('" 
+                string qAddToBill1 = "INSERT INTO sales(billId, billDate, amount, revenue, payType)  VALUES ('"
                     + billId + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "'," + poTotalBill.Text + "," + revenue + ", 'card');delete from currentbill;";
                 MySqlCommand cAddToBill1 = new MySqlCommand(qAddToBill1, dbconn.connection);
                 int queryAffected1 = cAddToBill1.ExecuteNonQuery();
 
                 payTypeBill =
-                    "\n\t\tPaid By\t : Credit Card" + 
+                    "\n\t\tPaid By\t : Credit Card" +
                     "\n\t\tBank\t   : " + cmbCardType.Text +
                     "\n\t\tDeducted : " + String.Format("{0:N}", decimal.Parse(poTotalBill.Text));
             }
@@ -391,7 +396,7 @@ namespace SuperMarketMS
                 int queryAffected1 = cAddToBill1.ExecuteNonQuery();
 
                 payTypeBill =
-                    "\n\t\tPaid By\t: Loan" + 
+                    "\n\t\tPaid By\t: Loan" +
                     "\n\t\tAccount\t: " + cmbLoanAccount.Text +
                     "\n\t\tPerson\t: " + cmbLoanName.Text +
                     "\n\t\tSettle\t: " + String.Format("{0:N}", decimal.Parse(loanSettle.Text)) +
@@ -428,9 +433,16 @@ namespace SuperMarketMS
             string totalBill =
                "\n---------------------------------------------------------" +
                 "\n\n\t\tGross \t : " + String.Format("{0:N}", decimal.Parse(poGross.Text)) +
-                "\n\t\tItems Discount : "  + String.Format("{0:N}", decimal.Parse(poItemSavings.Text)) +
+                "\n\t\tItems Discount : " + String.Format("{0:N}", decimal.Parse(poItemSavings.Text)) +
                 "\n\t\tBill Discount : " + billDiscount +
                 "\n\t\tTotal \t : " + String.Format("{0:N}", decimal.Parse(poTotalBill.Text));
+
+            if (poBillDiscount.Text == "" || poBillDiscount.Text == null)
+            {
+                poBillDiscount.Text = "0";
+            }
+
+
 
             string bestBuy = 
                 "\n\n  * Best Buy Discount\t : " + String.Format("{0:N}", (decimal.Parse(poBillDiscount.Text) + decimal.Parse(poItemSavings.Text)));

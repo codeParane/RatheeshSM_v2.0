@@ -118,6 +118,10 @@ namespace SuperMarketMS
             {
                 form.Close();
             }
+            BillManagement l = new BillManagement();
+            l.TopLevel = false;
+            dbFrmContainer.Controls.Add(l);
+            l.Show();
         }
 
         private void bunifuImageButton2_Click(object sender, EventArgs e)
@@ -130,6 +134,14 @@ namespace SuperMarketMS
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void bunifuFlatButton7_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in dbFrmContainer.Controls.OfType<Form>().ToArray())
+            {
+                form.Close();
+            }
         }
     }
 }

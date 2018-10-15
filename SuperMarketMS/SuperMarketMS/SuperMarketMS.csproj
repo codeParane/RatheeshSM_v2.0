@@ -68,6 +68,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BillManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BillManagement.Designer.cs">
+      <DependentUpon>BillManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="CashDeals.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,9 @@
     <Compile Include="viewDashboard.Designer.cs">
       <DependentUpon>viewDashboard.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BillManagement.resx">
+      <DependentUpon>BillManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CashDeals.resx">
       <DependentUpon>CashDeals.cs</DependentUpon>
     </EmbeddedResource>
