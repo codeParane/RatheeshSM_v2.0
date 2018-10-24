@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tpcStocks = new System.Windows.Forms.TabControl();
             this.tpcStock = new System.Windows.Forms.TabPage();
             this.label12 = new System.Windows.Forms.Label();
@@ -178,32 +178,32 @@
             this.dgvStocks.AllowUserToAddRows = false;
             this.dgvStocks.AllowUserToDeleteRows = false;
             this.dgvStocks.AllowUserToResizeRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(237)))), ((int)(((byte)(244)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvStocks.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(237)))), ((int)(((byte)(244)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvStocks.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvStocks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvStocks.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStocks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(79)))), ((int)(((byte)(129)))), ((int)(((byte)(189)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStocks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvStocks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(216)))), ((int)(((byte)(232)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvStocks.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(216)))), ((int)(((byte)(232)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvStocks.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvStocks.Location = new System.Drawing.Point(30, 108);
             this.dgvStocks.Name = "dgvStocks";
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvStocks.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvStocks.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvStocks.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvStocks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvStocks.Size = new System.Drawing.Size(951, 471);
@@ -270,6 +270,7 @@
             this.msEditStock.Name = "msEditStock";
             this.msEditStock.Size = new System.Drawing.Size(128, 70);
             this.msEditStock.TabIndex = 13;
+            this.msEditStock.TabStop = false;
             this.msEditStock.Text = "Edit Stock";
             this.msEditStock.UseVisualStyleBackColor = true;
             this.msEditStock.Click += new System.EventHandler(this.msEditStock_Click);
@@ -281,6 +282,7 @@
             this.msDiscountFinal.Name = "msDiscountFinal";
             this.msDiscountFinal.Size = new System.Drawing.Size(72, 29);
             this.msDiscountFinal.TabIndex = 20;
+            this.msDiscountFinal.TabStop = false;
             this.msDiscountFinal.Text = "0";
             this.msDiscountFinal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -291,6 +293,7 @@
             this.msDiscountPer.Name = "msDiscountPer";
             this.msDiscountPer.Size = new System.Drawing.Size(72, 29);
             this.msDiscountPer.TabIndex = 19;
+            this.msDiscountPer.TabStop = false;
             this.msDiscountPer.Text = "0";
             this.msDiscountPer.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -319,6 +322,7 @@
             this.msStockTotal.Name = "msStockTotal";
             this.msStockTotal.Size = new System.Drawing.Size(72, 29);
             this.msStockTotal.TabIndex = 16;
+            this.msStockTotal.TabStop = false;
             this.msStockTotal.Text = "0";
             this.msStockTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -329,6 +333,7 @@
             this.msInHand.Name = "msInHand";
             this.msInHand.Size = new System.Drawing.Size(72, 29);
             this.msInHand.TabIndex = 15;
+            this.msInHand.TabStop = false;
             this.msInHand.Text = "0";
             this.msInHand.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.msInHand.TextChanged += new System.EventHandler(this.msInHand_TextChanged);
@@ -357,6 +362,7 @@
             this.msDeleteStock.Name = "msDeleteStock";
             this.msDeleteStock.Size = new System.Drawing.Size(128, 70);
             this.msDeleteStock.TabIndex = 11;
+            this.msDeleteStock.TabStop = false;
             this.msDeleteStock.Text = "Delete Stock";
             this.msDeleteStock.UseVisualStyleBackColor = true;
             this.msDeleteStock.Click += new System.EventHandler(this.button4_Click);
@@ -367,6 +373,7 @@
             this.msUpdateStock.Name = "msUpdateStock";
             this.msUpdateStock.Size = new System.Drawing.Size(128, 70);
             this.msUpdateStock.TabIndex = 12;
+            this.msUpdateStock.TabStop = false;
             this.msUpdateStock.Text = "Update Stock";
             this.msUpdateStock.UseVisualStyleBackColor = true;
             this.msUpdateStock.Click += new System.EventHandler(this.button3_Click);
@@ -377,6 +384,7 @@
             this.msClear.Name = "msClear";
             this.msClear.Size = new System.Drawing.Size(128, 70);
             this.msClear.TabIndex = 10;
+            this.msClear.TabStop = false;
             this.msClear.Text = "Clear";
             this.msClear.UseVisualStyleBackColor = true;
             this.msClear.Click += new System.EventHandler(this.msClear_Click);
