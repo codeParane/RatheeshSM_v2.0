@@ -48,12 +48,33 @@ namespace SuperMarketMS
                     }
                 }
             }
-            
+
+            dbconn.CloseConnection();
+            dbconn.OpenConnection();
+            string qr_getProduct1 = "SELECT sum(amount) AS amount, sum(revenue)  AS revenue FROM sm.sales where billDate like '" +
+                csSalesDate.Value.ToString("yyyy-MM") + "%';";
+            MySqlCommand cm_getProduct1 = new MySqlCommand(qr_getProduct1, dbconn.connection);
+            MySqlDataReader dr_getProduct1 = cm_getProduct1.ExecuteReader();
+
+            if (dr_getProduct1.HasRows == true)
+            {
+                while (dr_getProduct1.Read())
+                {
+                    if (dr_getProduct1["amount"] != null && dr_getProduct1["revenue"] != null && dr_getProduct1["revenue"].ToString() != "" && dr_getProduct1["revenue"].ToString() != "")
+                    {
+                        RevenueMonth.Text = decimal.Parse(dr_getProduct1["revenue"].ToString()).ToString();
+                        SalesMonth.Text = decimal.Parse(dr_getProduct1["amount"].ToString()).ToString();
+                    }
+                }
+            }
+
         }
 
         private void CashDeals_Load(object sender, EventArgs e)
         {
 
         }
+
+      
     }
 }

@@ -707,7 +707,16 @@ namespace SuperMarketMS
 
         private void msEditStock_Click(object sender, EventArgs e)
         {
+            dbconn.CloseConnection();
+            dbconn.OpenConnection();
 
+            string qAddToBill1 = "UPDATE stocks set qty = "+ double.Parse(msQuantity.Text) +" where id=" + uiItemCode.Text + ";";
+            MySqlCommand cAddToBill1 = new MySqlCommand(qAddToBill1, dbconn.connection);
+            int queryAffected1 = cAddToBill1.ExecuteNonQuery();
+            if (queryAffected1 > 0)
+            {
+                MessageBox.Show("Item Updated!!!");
+            }
         }
 
         private void button3_Click_1(object sender, EventArgs e)
