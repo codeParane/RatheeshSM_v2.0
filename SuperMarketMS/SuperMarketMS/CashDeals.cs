@@ -23,7 +23,7 @@ namespace SuperMarketMS
             //load  data grid view
             dbconn.CloseConnection();
             dbconn.OpenConnection();
-            string qGetStocks = "select * from sales where billDate  = '" + csSalesDate.Value.ToString("yyyy-MM-dd") + "';";
+            string qGetStocks = "select * from sales where billDate  = '" + csSalesDate.Value.ToString("yyyy-MM-dd") + "' order by billid desc;";
             MySqlDataAdapter aGetStocks = new MySqlDataAdapter(qGetStocks, dbconn.connection);
             DataSet ds = new DataSet();
             aGetStocks.Fill(ds, "sto");
