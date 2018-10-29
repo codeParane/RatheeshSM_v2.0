@@ -709,13 +709,14 @@ namespace SuperMarketMS
         {
             dbconn.CloseConnection();
             dbconn.OpenConnection();
-
-            string qAddToBill1 = "UPDATE stocks set qty = "+ double.Parse(msQuantity.Text) +" where id=" + uiItemCode.Text + ";";
+            //mysql> update stocks set qty = 1010 where barcode='9556108211349';
+            string qAddToBill1 = "UPDATE stocks set qty = "+ double.Parse(msQuantity.Text) +" where barcode='" + msBarCode.Text + "';";
             MySqlCommand cAddToBill1 = new MySqlCommand(qAddToBill1, dbconn.connection);
             int queryAffected1 = cAddToBill1.ExecuteNonQuery();
             if (queryAffected1 > 0)
             {
                 MessageBox.Show("Item Updated!!!");
+                msClear_Click("", e);
             }
         }
 
