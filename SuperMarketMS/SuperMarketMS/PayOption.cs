@@ -172,77 +172,83 @@ namespace SuperMarketMS
 
         private void poCash_TextChanged(object sender, EventArgs e)
         {
-            if (double.Parse(poCash.Text) > 0)
-            {
-                if (poBillDiscount.Text != "" && poBillDiscount.Text != null)
+            if (poCash.Text != "" && poCash.Text != null) {
+                if (double.Parse(poCash.Text) > 0)
                 {
-                    decimal gross = Math.Round(decimal.Parse(poGross.Text), 2);
-                    decimal itemSaving = Math.Round(decimal.Parse(poItemSavings.Text), 2);
-                    decimal gross_itemSaving = gross - itemSaving;
-                    if (poBillDiscount.Text != "")
+                    if (poBillDiscount.Text != "" && poBillDiscount.Text != null)
                     {
-                        decimal disCash = 0;
-                        decimal disPer = 0;
-
-
-
-                        string disValue = poBillDiscount.Text;
-                        decimal disValueDecimal = 0;
-
-                        if (disValue.Substring(disValue.Length - 1) == "%" && disValue != "0")
+                        decimal gross = Math.Round(decimal.Parse(poGross.Text), 2);
+                        decimal itemSaving = Math.Round(decimal.Parse(poItemSavings.Text), 2);
+                        decimal gross_itemSaving = gross - itemSaving;
+                        if (poBillDiscount.Text != "")
                         {
-                            disValueDecimal = decimal.Parse(disValue.Remove(disValue.Length - 1));
-                            if (decimal.Parse(disValue.Remove(disValue.Length - 1)) >= 100 || decimal.Parse(disValue.Remove(disValue.Length - 1)) < 0)
+                            decimal disCash = 0;
+                            decimal disPer = 0;
+
+
+
+                            string disValue = poBillDiscount.Text;
+                            decimal disValueDecimal = 0;
+
+                            if (disValue.Substring(disValue.Length - 1) == "%" && disValue != "0")
                             {
-                                MessageBox.Show("Wrong Discount Percentage!!!");
-                                poBillDiscount.Text = "0"; poBillDisPer.Text = "0"; poBillDisCash.Text = "0";
+                                disValueDecimal = decimal.Parse(disValue.Remove(disValue.Length - 1));
+                                if (decimal.Parse(disValue.Remove(disValue.Length - 1)) >= 100 || decimal.Parse(disValue.Remove(disValue.Length - 1)) < 0)
+                                {
+                                    MessageBox.Show("Wrong Discount Percentage!!!");
+                                    poBillDiscount.Text = "0"; poBillDisPer.Text = "0"; poBillDisCash.Text = "0";
+                                }
+                                else
+                                {
+                                    disCash = Math.Round(gross_itemSaving * (disValueDecimal / 100), 2);
+                                    poBillDisCash.Text = disCash.ToString();
+                                    poBillDisPer.Text = poBillDiscount.Text;
+                                    poTotalBill.Text = Math.Round(gross_itemSaving - decimal.Parse(poBillDisCash.Text), 2).ToString();
+                                }
                             }
-                            else
+                            else if (disValue.Substring(disValue.Length - 1) != "%" && disValue != "0")
                             {
-                                disCash = Math.Round(gross_itemSaving * (disValueDecimal / 100), 2);
-                                poBillDisCash.Text = disCash.ToString();
-                                poBillDisPer.Text = poBillDiscount.Text;
-                                poTotalBill.Text = Math.Round(gross_itemSaving - decimal.Parse(poBillDisCash.Text), 2).ToString();
+                                disValueDecimal = decimal.Parse(disValue);
+                                if (disValueDecimal < 0)
+                                {
+                                    MessageBox.Show("Wrong Discount Amount!!!");
+                                    poBillDiscount.Text = "0"; poBillDisPer.Text = "0"; poBillDisCash.Text = "0";
+                                }
+                                else if (disValueDecimal > 0)
+                                {
+                                    decimal div = 0;
+                                    div = disValueDecimal / gross_itemSaving;
+                                    disPer = Math.Round(div * 100, 2);
+                                    poBillDisCash.Text = poBillDiscount.Text;
+                                    poBillDisPer.Text = disPer.ToString();
+                                    poTotalBill.Text = Math.Round(gross_itemSaving - decimal.Parse(poBillDisCash.Text), 2).ToString();
+                                }
                             }
                         }
-                        else if (disValue.Substring(disValue.Length - 1) != "%" && disValue != "0")
+                        else
                         {
-                            disValueDecimal = decimal.Parse(disValue);
-                            if (disValueDecimal < 0)
-                            {
-                                MessageBox.Show("Wrong Discount Amount!!!");
-                                poBillDiscount.Text = "0"; poBillDisPer.Text = "0"; poBillDisCash.Text = "0";
-                            }
-                            else if (disValueDecimal > 0)
-                            {
-                                decimal div = 0;
-                                div = disValueDecimal / gross_itemSaving;
-                                disPer = Math.Round(div * 100, 2);
-                                poBillDisCash.Text = poBillDiscount.Text;
-                                poBillDisPer.Text = disPer.ToString();
-                                poTotalBill.Text = Math.Round(gross_itemSaving - decimal.Parse(poBillDisCash.Text), 2).ToString();
-                            }
+                            poBillDisPer.Text = "0%";
+                            poBillDisCash.Text = "0";
+                            poTotalBill.Text = gross_itemSaving.ToString();
                         }
+                    }
+
+                    if (poCash.Text != "0" && poCash.Text != "" && poCash.Text != null)
+                    {
+                        poBalance.Text = Math.Round(decimal.Parse(poCash.Text) - decimal.Parse(poTotalBill.Text), 2).ToString();
+
                     }
                     else
                     {
-                        poBillDisPer.Text = "0%";
-                        poBillDisCash.Text = "0";
-                        poTotalBill.Text = gross_itemSaving.ToString();
+                        poBalance.Text = poTotalBill.Text;
                     }
-                }
-
-                if (poCash.Text != "0" && poCash.Text != "" && poCash.Text != null)
-                {
-                    poBalance.Text = Math.Round(decimal.Parse(poCash.Text) - decimal.Parse(poTotalBill.Text), 2).ToString();
 
                 }
-                else
-                {
-                    poBalance.Text = poTotalBill.Text;
-                }
+
+
 
             }
+            
 
         }
 
