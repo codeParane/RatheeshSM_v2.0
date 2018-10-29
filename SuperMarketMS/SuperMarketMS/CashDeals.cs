@@ -23,7 +23,8 @@ namespace SuperMarketMS
             //load  data grid view
             dbconn.CloseConnection();
             dbconn.OpenConnection();
-            string qGetStocks = "select * from sales where billDate  = '" + csSalesDate.Value.ToString("yyyy-MM-dd") + "' order by billid desc;";
+            string qGetStocks = "select * from sales where billDate > '" + csSalesStart.Value.ToString("yyyy-MM-dd") + "' and billDate < '" 
+                + csSalesEd.Value.ToString("yyyy-MM-dd") + "' order by billid desc;";
             MySqlDataAdapter aGetStocks = new MySqlDataAdapter(qGetStocks, dbconn.connection);
             DataSet ds = new DataSet();
             aGetStocks.Fill(ds, "sto");
@@ -32,8 +33,8 @@ namespace SuperMarketMS
 
             dbconn.CloseConnection();
             dbconn.OpenConnection();
-            string qr_getProduct = "SELECT sum(amount) AS amount, sum(revenue)  AS revenue FROM sm.sales where billDate='" +
-                csSalesDate.Value.ToString("yyyy-MM-dd") + "';";
+            string qr_getProduct = "SELECT sum(amount) AS amount, sum(revenue)  AS revenue FROM sm.sales where billDate > '" +
+                csSalesStart.Value.ToString("yyyy-MM-dd") + "' and billDate < '" + csSalesEd.Value.ToString("yyyy-MM-dd") + "' order by billid desc;" ;
             MySqlCommand cm_getProduct = new MySqlCommand(qr_getProduct, dbconn.connection);
             MySqlDataReader dr_getProduct = cm_getProduct.ExecuteReader();
 
@@ -49,24 +50,24 @@ namespace SuperMarketMS
                 }
             }
 
-            dbconn.CloseConnection();
-            dbconn.OpenConnection();
-            string qr_getProduct1 = "SELECT sum(amount) AS amount, sum(revenue)  AS revenue FROM sm.sales where billDate like '" +
-                csSalesDate.Value.ToString("yyyy-MM") + "%';";
-            MySqlCommand cm_getProduct1 = new MySqlCommand(qr_getProduct1, dbconn.connection);
-            MySqlDataReader dr_getProduct1 = cm_getProduct1.ExecuteReader();
+            //dbconn.CloseConnection();
+            //dbconn.OpenConnection();
+            //string qr_getProduct1 = "SELECT sum(amount) AS amount, sum(revenue)  AS revenue FROM sm.sales where billDate like '" +
+            //    csSalesStart.Value.ToString("yyyy-MM") + "%';";
+            //MySqlCommand cm_getProduct1 = new MySqlCommand(qr_getProduct1, dbconn.connection);
+            //MySqlDataReader dr_getProduct1 = cm_getProduct1.ExecuteReader();
 
-            if (dr_getProduct1.HasRows == true)
-            {
-                while (dr_getProduct1.Read())
-                {
-                    if (dr_getProduct1["amount"] != null && dr_getProduct1["revenue"] != null && dr_getProduct1["revenue"].ToString() != "" && dr_getProduct1["revenue"].ToString() != "")
-                    {
-                        RevenueMonth.Text = decimal.Parse(dr_getProduct1["revenue"].ToString()).ToString();
-                        SalesMonth.Text = decimal.Parse(dr_getProduct1["amount"].ToString()).ToString();
-                    }
-                }
-            }
+            //if (dr_getProduct1.HasRows == true)
+            //{
+            //    while (dr_getProduct1.Read())
+            //    {
+            //        if (dr_getProduct1["amount"] != null && dr_getProduct1["revenue"] != null && dr_getProduct1["revenue"].ToString() != "" && dr_getProduct1["revenue"].ToString() != "")
+            //        {
+            //            RevenueMonth.Text = decimal.Parse(dr_getProduct1["revenue"].ToString()).ToString();
+            //            SalesMonth.Text = decimal.Parse(dr_getProduct1["amount"].ToString()).ToString();
+            //        }
+            //    }
+            //}
 
         }
 
@@ -75,6 +76,9 @@ namespace SuperMarketMS
 
         }
 
-      
+        private void csSalesEd_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimePicker1_ValueChanged("",e);
+        }
     }
 }

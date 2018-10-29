@@ -43,7 +43,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.90027F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 87.09972F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 642F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 643F));
             this.tableLayoutPanel1.Controls.Add(this.dgvAllBills, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.dgvSelectedBills, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.textBox1, 2, 0);
@@ -69,7 +69,7 @@
             this.dgvAllBills.Name = "dgvAllBills";
             this.dgvAllBills.ReadOnly = true;
             this.dgvAllBills.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAllBills.Size = new System.Drawing.Size(405, 368);
+            this.dgvAllBills.Size = new System.Drawing.Size(404, 368);
             this.dgvAllBills.TabIndex = 0;
             this.dgvAllBills.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAllBills_RowEnter);
             // 
@@ -80,15 +80,15 @@
             this.dgvSelectedBills.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvSelectedBills.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSelectedBills.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvSelectedBills.Location = new System.Drawing.Point(474, 71);
+            this.dgvSelectedBills.Location = new System.Drawing.Point(473, 71);
             this.dgvSelectedBills.Name = "dgvSelectedBills";
             this.dgvSelectedBills.ReadOnly = true;
-            this.dgvSelectedBills.Size = new System.Drawing.Size(637, 368);
+            this.dgvSelectedBills.Size = new System.Drawing.Size(638, 368);
             this.dgvSelectedBills.TabIndex = 1;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(474, 3);
+            this.textBox1.Location = new System.Drawing.Point(473, 3);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(358, 20);
             this.textBox1.TabIndex = 3;
