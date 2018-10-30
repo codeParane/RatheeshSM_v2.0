@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,13 +17,13 @@ namespace SuperMarketMS
         {
             InitializeComponent();
         }
-
+        DbConn dbconn = new DbConn();
         private void DashBoard_Load(object sender, EventArgs e)
         {
             if (LoginForm.loggedUser == "" || LoginForm.loggedUser == null)
             {
                 LoginForm.loggedUser = "Null User";
-            };
+            }
 
             if (LoginForm.loggedUser != null)
             {
@@ -34,6 +35,25 @@ namespace SuperMarketMS
             dbTimer.Interval = 1000;
             dbTimer.Tick += new EventHandler(this.tmrDateTime_Tick);
 
+
+            dbconn.CloseConnection();
+            dbconn.OpenConnection();
+            string qr_getProduct = "SELECT totalBill as billAmount from totalbillday;";
+            MySqlCommand cm_getProduct = new MySqlCommand(qr_getProduct, dbconn.connection);
+            MySqlDataReader dr_getProduct = cm_getProduct.ExecuteReader();
+
+            if (dr_getProduct.HasRows == true)
+            {
+                while (dr_getProduct.Read())
+                {
+                    if (dr_getProduct["billAmount"] != null)
+                    {
+                        totalCash.Text = "In Locker : " + dr_getProduct["billAmount"].ToString();
+                    }
+                }
+            }
+
+
             foreach (Form form in dbFrmContainer.Controls.OfType<Form>().ToArray())
             {
                 form.Close();
@@ -42,7 +62,9 @@ namespace SuperMarketMS
             l.TopLevel = false;
             dbFrmContainer.Controls.Add(l);
             l.Show();
+
         }
+
         private void tmrDateTime_Tick(object sender, EventArgs e)
         {
             string dtTime = DateTime.Now.ToString("hh:mm:ss");
@@ -142,6 +164,11 @@ namespace SuperMarketMS
             {
                 form.Close();
             }
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

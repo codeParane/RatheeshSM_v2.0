@@ -93,6 +93,7 @@ namespace SuperMarketMS
 
         private void PayOption_Load(object sender, EventArgs e)
         {
+            poCash.Focus();
             dbconn.CloseConnection();
             dbconn.OpenConnection();
             string qGetStocks = "select itemcode, itemname, qty, rate, disa, net, cmprice from currentbill; ";
@@ -379,6 +380,18 @@ namespace SuperMarketMS
                     "\n\t\tPaid By\t: Cash   " +
                     "\n\t\tCash\t: " + String.Format("{0:N}", decimal.Parse(poCash.Text)) +
                     "\n\t\tBalance\t: " + String.Format("{0:N}", decimal.Parse(poBalance.Text));
+
+                dbconn.CloseConnection();
+                dbconn.OpenConnection();
+                string qAddToBill = "update totalbillday set totalbill = totalbill + " + loanSettle.Text + " where day = '" + DateTime.Now.ToString("yyyy-MM-dd") + "';";
+                MySqlCommand cAddToBill = new MySqlCommand(qAddToBill, dbconn.connection);
+                int queryAffected = cAddToBill.ExecuteNonQuery();
+                if (queryAffected > 0)
+                {
+                }
+
+
+
             }
             else if (payType == "card")
             {
@@ -394,6 +407,19 @@ namespace SuperMarketMS
                     "\n\t\tPaid By\t : Credit Card" +
                     "\n\t\tBank\t   : " + cmbCardType.Text +
                     "\n\t\tDeducted : " + String.Format("{0:N}", decimal.Parse(poTotalBill.Text));
+
+
+                dbconn.CloseConnection();
+                dbconn.OpenConnection();
+                string qAddToBill = "update totalbillday set totalbill = totalbill + " + loanSettle.Text + " where day = '" + DateTime.Now.ToString("yyyy-MM-dd") + "';";
+                MySqlCommand cAddToBill = new MySqlCommand(qAddToBill, dbconn.connection);
+                int queryAffected = cAddToBill.ExecuteNonQuery();
+                if (queryAffected > 0)
+                {
+                }
+
+
+
             }
             else if (payType == "loan")
             {
@@ -411,6 +437,18 @@ namespace SuperMarketMS
                     "\n\t\tPerson\t: " + cmbLoanName.Text +
                     "\n\t\tSettle\t: " + String.Format("{0:N}", decimal.Parse(loanSettle.Text)) +
                     "\n\t\tTotal Credit: " + String.Format("{0:N}", decimal.Parse(loanSettle.Text));
+
+
+                dbconn.CloseConnection();
+                dbconn.OpenConnection();
+                string qAddToBill = "update totalbillday set totalbill = totalbill + " + loanSettle.Text + " where day = '"+ DateTime.Now.ToString("yyyy-MM-dd") +"';";
+                MySqlCommand cAddToBill = new MySqlCommand(qAddToBill, dbconn.connection);
+                int queryAffected = cAddToBill.ExecuteNonQuery();
+                if (queryAffected > 0)
+                {
+                }
+
+
             }
 
             //SELECT fields FROM table ORDER BY id DESC LIMIT 1;

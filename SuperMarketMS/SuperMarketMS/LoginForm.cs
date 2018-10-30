@@ -60,6 +60,30 @@ namespace SuperMarketMS
         {
             dbconn.CloseConnection();
             dbconn.OpenConnection();
+
+            string isDateAvailable = "SELECT * FROM totalbillday where day='"+ DateTime.Now.ToString("yyyy-MM-dd") +"';";
+            MySqlCommand cmdisDateAvailable = new MySqlCommand(isDateAvailable, dbconn.connection);
+            MySqlDataReader drisDateAvailable = cmdisDateAvailable.ExecuteReader();
+
+            if (drisDateAvailable.HasRows)
+            {
+              
+
+            }
+            else
+            {
+                string qAddToBill1 = "INSERT INTO totalbillday VALUES ('"+ DateTime.Now.ToString("yyyy-MM-dd") +"', 0);";
+                MySqlCommand cAddToBill1 = new MySqlCommand(qAddToBill1, dbconn.connection);
+                int queryAffected1 = cAddToBill1.ExecuteNonQuery();
+            }
+
+
+
+
+
+
+            dbconn.CloseConnection();
+            dbconn.OpenConnection();
             bool isExecute = true;
             if (txtUserName.Text.Equals("") || txtPassword.Text.Equals(""))
             {
