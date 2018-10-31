@@ -23,7 +23,7 @@ namespace SuperMarketMS
             //load  data grid view
             dbconn.CloseConnection();
             dbconn.OpenConnection();
-            string qGetStocks = "select * from sales where billDate >= '" + csSalesStart.Value.ToString("yyyy-MM-dd") + "' and billDate =< '" 
+            string qGetStocks = "select * from sales where billDate >= '" + csSalesStart.Value.ToString("yyyy-MM-dd") + "' and billDate <= '" 
                 + csSalesEd.Value.ToString("yyyy-MM-dd") + "' order by billid desc;";
             MySqlDataAdapter aGetStocks = new MySqlDataAdapter(qGetStocks, dbconn.connection);
             DataSet ds = new DataSet();
@@ -34,7 +34,7 @@ namespace SuperMarketMS
             dbconn.CloseConnection();
             dbconn.OpenConnection();
             string qr_getProduct = "SELECT sum(amount) AS amount, sum(revenue)  AS revenue FROM sm.sales where billDate >= '" +
-                csSalesStart.Value.ToString("yyyy-MM-dd") + "' and billDate =< '" + csSalesEd.Value.ToString("yyyy-MM-dd") + "' order by billid desc;" ;
+                csSalesStart.Value.ToString("yyyy-MM-dd") + "' and billDate <= '" + csSalesEd.Value.ToString("yyyy-MM-dd") + "' order by billid desc;" ;
             MySqlCommand cm_getProduct = new MySqlCommand(qr_getProduct, dbconn.connection);
             MySqlDataReader dr_getProduct = cm_getProduct.ExecuteReader();
 

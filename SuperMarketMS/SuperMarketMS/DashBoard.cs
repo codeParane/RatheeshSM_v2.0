@@ -36,6 +36,23 @@ namespace SuperMarketMS
             dbTimer.Tick += new EventHandler(this.tmrDateTime_Tick);
 
 
+           
+
+
+            foreach (Form form in dbFrmContainer.Controls.OfType<Form>().ToArray())
+            {
+                form.Close();
+            }
+            viewDashboard l = new viewDashboard();
+            l.TopLevel = false;
+            dbFrmContainer.Controls.Add(l);
+            l.Show();
+
+        }
+
+
+        public void updateCash()
+        {
             dbconn.CloseConnection();
             dbconn.OpenConnection();
             string qr_getProduct = "SELECT totalBill as billAmount from totalbillday;";
@@ -52,17 +69,6 @@ namespace SuperMarketMS
                     }
                 }
             }
-
-
-            foreach (Form form in dbFrmContainer.Controls.OfType<Form>().ToArray())
-            {
-                form.Close();
-            }
-            viewDashboard l = new viewDashboard();
-            l.TopLevel = false;
-            dbFrmContainer.Controls.Add(l);
-            l.Show();
-
         }
 
         private void tmrDateTime_Tick(object sender, EventArgs e)
@@ -70,6 +76,7 @@ namespace SuperMarketMS
             string dtTime = DateTime.Now.ToString("hh:mm:ss");
             string dtDate = DateTime.Now.ToString("yyyy/MM/dd");
             dbTimeNDate.Text = dtDate + " - " + dtTime;
+            updateCash();
         }
 
         private void bunifuFlatButton1_Click(object sender, EventArgs e)
