@@ -72,6 +72,8 @@ namespace SuperMarketMS
             }
             else
             {
+                dbconn.CloseConnection();
+                dbconn.OpenConnection();
                 string qAddToBill1 = "INSERT INTO totalbillday VALUES ('"+ DateTime.Now.ToString("yyyy-MM-dd") +"', 0);";
                 MySqlCommand cAddToBill1 = new MySqlCommand(qAddToBill1, dbconn.connection);
                 int queryAffected1 = cAddToBill1.ExecuteNonQuery();
