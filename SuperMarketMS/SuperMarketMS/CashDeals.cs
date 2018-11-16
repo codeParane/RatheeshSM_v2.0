@@ -80,5 +80,40 @@ namespace SuperMarketMS
         {
             dateTimePicker1_ValueChanged("",e);
         }
+
+        private void csTotalSales_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvStocks_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvStocks.Rows[0].Cells[0].Value.ToString() != null && dgvStocks.Rows[0].Cells[0].Value.ToString() != "")
+            {
+                dgvStocks.Rows[0].Selected = true;
+                billId.Text = dgvStocks.SelectedRows[0].Cells[0].Value.ToString();
+                billAmount.Text = dgvStocks.SelectedRows[0].Cells[3].Value.ToString();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dbconn.CloseConnection();
+            dbconn.OpenConnection();
+            string billNo = dgvStocks.SelectedRows[0].Cells[0].Value.ToString();
+            string Amount = dgvStocks.SelectedRows[0].Cells[3].Value.ToString();
+            //MessageBox.Show(delItemCode + delQty); 
+            string qaddtobill = "update sales set revenue = "+ Amount +" where billid = '"+ billId +"';";
+            dbconn.CloseConnection();
+            dbconn.OpenConnection();
+            MySqlCommand caddtobill = new MySqlCommand(qaddtobill, dbconn.connection);
+            int queryAffected = caddtobill.ExecuteNonQuery();
+
+            dateTimePicker1_ValueChanged("", e);
+            billId.Clear();
+            billAmount.Clear();
+            billAmount.Focus();
+
+        }
     }
 }
