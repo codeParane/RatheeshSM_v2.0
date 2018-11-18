@@ -83,7 +83,7 @@ namespace SuperMarketMS
         {
             if (msCmbMgStocksItem.Text == "ALL")
             {
-                MessageBox.Show("ok");
+                //MessageBox.Show("ok");
                 //  string qGetStocks = "SELECT s.barcode, i.name, i.category, s.qty FROM items AS i JOIN stocks " +
                 //"AS s ON i.id = s.itemid WHERE i.category = '" + cmbStoksItemCat.Text + "'; ";
                 //  MySqlDataAdapter aGetStocks = new MySqlDataAdapter(qGetStocks, dbconn.connection);
@@ -891,6 +891,178 @@ namespace SuperMarketMS
         private void uiItemName_TextChanged(object sender, EventArgs e)
         {
             updateItemTextChanged();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //cash in stocks 
+        private void tabPage1_Enter(object sender, EventArgs e)
+        {
+            cas_ItemCat.Items.Clear();
+            cas_ItemCat.Items.Add("ALL");
+            cas_ItemCat.SelectedItem = "ALL";
+
+            dbconn.CloseConnection();
+            dbconn.OpenConnection();
+            string qCmbCatFill = "SELECT DISTINCT category FROM items;";
+            MySqlDataAdapter aCmbCatFill = new MySqlDataAdapter(qCmbCatFill, dbconn.connection);
+            DataTable dt = new DataTable();
+            aCmbCatFill.Fill(dt);
+            foreach (DataRow row in dt.Rows)
+            {
+                cas_ItemCat.Items.Add(row[0].ToString());
+            }
+        }
+
+        private void cas_ItemCat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dbconn.CloseConnection();
+            dbconn.OpenConnection();
+
+            if (cas_ItemCat.Text == "ALL")
+            {
+
+                cas_Item.Enabled = false;
+                string qGetStocks = "SELECT " +
+                    "s.barcode AS 'Bar Code', i.iname AS 'Item Name', i.category AS " +
+                    "'Item Category', s.qty AS 'Quantity ', s.companyPrice, s.sellingPrice, " +
+                    "s.companyprice * s.qty as tot FROM items AS i JOIN stocks AS s ON i.id = s.itemid; ";
+                MySqlDataAdapter aGetStocks = new MySqlDataAdapter(qGetStocks, dbconn.connection);
+                DataSet ds = new DataSet();
+                aGetStocks.Fill(ds, "Stocksa");
+                cas_Datagv.DataSource = ds.Tables["Stocksa"];
+
+                //
+
+                dbconn.CloseConnection();
+                dbconn.OpenConnection();
+                string qr_getProduct = "select sum(companyprice* qty) as tot from stocks;";
+                MySqlCommand cm_getProduct = new MySqlCommand(qr_getProduct, dbconn.connection);
+                MySqlDataReader dr_getProduct = cm_getProduct.ExecuteReader();
+
+                if (dr_getProduct.HasRows == true)
+                {
+                    while (dr_getProduct.Read())
+                    {
+                        if (dr_getProduct["tot"] != null)
+                        {
+                            cas_Total.Text = dr_getProduct["tot"].ToString();
+                            
+                        }
+                    }
+                }
+                    //
+                }
+            else
+            {
+                cas_Item.Enabled = true;
+                cas_Item.Items.Clear();
+                cas_Item.Items.Add("ALL");
+                cas_Item.SelectedItem = "ALL";
+                string selectedCategory = cas_ItemCat.Text;
+                dbconn.CloseConnection();
+                dbconn.OpenConnection();
+                string qCmbItemFill = "SELECT iname FROM items WHERE category = '" + selectedCategory + "';";
+                MySqlDataAdapter aCmbItemFill = new MySqlDataAdapter(qCmbItemFill, dbconn.connection);
+                DataTable dt = new DataTable();
+                aCmbItemFill.Fill(dt);
+                foreach (DataRow row in dt.Rows)
+                {
+                    cas_Item.Items.Add(row[0].ToString());
+                }
+
+                string qGetStocks = "SELECT s.barcode, i.iname, i.category, s.qty, s.companyPrice, s.sellingPrice, s.companyprice * s.qty as tot  FROM items AS i JOIN stocks " +
+               "AS s ON i.id = s.itemid WHERE i.category = '" + selectedCategory + "'; ";
+                MySqlDataAdapter aGetStocks = new MySqlDataAdapter(qGetStocks, dbconn.connection);
+                DataSet ds = new DataSet();
+                aGetStocks.Fill(ds, "Stocks2a");
+                cas_Datagv.DataSource = ds.Tables["Stocks2a"];
+
+                //
+
+                dbconn.CloseConnection();
+                dbconn.OpenConnection();
+                string qr_getProduct = "select sum(s.companyprice* s.qty) as tot FROM items AS i JOIN stocks " +
+               "AS s ON i.id = s.itemid WHERE i.category = '" + selectedCategory + "'; ";
+                MySqlCommand cm_getProduct = new MySqlCommand(qr_getProduct, dbconn.connection);
+                MySqlDataReader dr_getProduct = cm_getProduct.ExecuteReader();
+
+                if (dr_getProduct.HasRows == true)
+                {
+                    while (dr_getProduct.Read())
+                    {
+                        if (dr_getProduct["tot"] != null)
+                        {
+                            cas_Total.Text = dr_getProduct["tot"].ToString();
+
+                        }
+                    }
+                }
+                //
+
+            }
+
+        }
+
+        private void cas_Item_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cas_Item.Text == "ALL")
+            {
+                }
+            else
+            {
+                dbconn.CloseConnection();
+                dbconn.OpenConnection();
+                string qGetStockqs = "SELECT s.barcode, i.iname, i.category, s.qty, s.companyPrice, s.sellingPrice, s.companyprice * s.qty as tot  FROM items AS i JOIN stocks " +
+                "AS s ON i.id = s.itemid WHERE i.category = '" + cas_ItemCat.Text + "' && i.iname = '" +
+                cas_Item.Text + "'; ";
+                MySqlDataAdapter aGetStockqs = new MySqlDataAdapter(qGetStockqs, dbconn.connection);
+                DataSet dsq = new DataSet();
+                aGetStockqs.Fill(dsq, "Stocksaa");
+                cas_Datagv.DataSource = dsq.Tables["Stocksaa"];
+
+
+                //
+
+                dbconn.CloseConnection();
+                dbconn.OpenConnection();
+                string qr_getProduct = "select sum(s.companyprice* s.qty) as tot FROM items AS i JOIN stocks " +
+                "AS s ON i.id = s.itemid WHERE i.category = '" + cas_ItemCat.Text + "' && i.iname = '" +
+                cas_Item.Text + "'; ";
+                MySqlCommand cm_getProduct = new MySqlCommand(qr_getProduct, dbconn.connection);
+                MySqlDataReader dr_getProduct = cm_getProduct.ExecuteReader();
+
+                if (dr_getProduct.HasRows == true)
+                {
+                    while (dr_getProduct.Read())
+                    {
+                        if (dr_getProduct["tot"] != null)
+                        {
+                            cas_Total.Text = dr_getProduct["tot"].ToString();
+
+                        }
+                    }
+                }
+                //
+            }
         }
     }
 }

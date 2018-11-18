@@ -58,6 +58,21 @@ namespace SuperMarketMS
 
         private void btnLogin_Click_1(object sender, EventArgs e)
         {
+
+            //  $ mysqldump -u root -p1234 sm > dateTime.sql
+            string fileName = DateTime.Now.ToString("yyyy-MM-dd-HHmm");
+            //string strCmdText = "mysqldump -u root -p1234 sm > d:/backup/"+fileName+".sql";
+            //System.Diagnostics.Process.Start("CMD.exe", strCmdText);
+
+
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = "/C mysqldump -u root -p1234 sm > d:/backup/" + fileName + ".sql";
+            process.StartInfo = startInfo;
+            process.Start();
+
             dbconn.CloseConnection();
             dbconn.OpenConnection();
 

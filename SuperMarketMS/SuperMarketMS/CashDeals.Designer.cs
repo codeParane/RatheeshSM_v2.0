@@ -47,6 +47,7 @@
             this.billId = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.billAmount = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStocks)).BeginInit();
             this.SuspendLayout();
             // 
@@ -142,6 +143,7 @@
             // 
             // csTotalSales
             // 
+            this.csTotalSales.Enabled = false;
             this.csTotalSales.Location = new System.Drawing.Point(393, 43);
             this.csTotalSales.Name = "csTotalSales";
             this.csTotalSales.Size = new System.Drawing.Size(100, 20);
@@ -150,6 +152,7 @@
             // 
             // csTotalRevenue
             // 
+            this.csTotalRevenue.Enabled = false;
             this.csTotalRevenue.Location = new System.Drawing.Point(393, 76);
             this.csTotalRevenue.Name = "csTotalRevenue";
             this.csTotalRevenue.Size = new System.Drawing.Size(100, 20);
@@ -198,9 +201,10 @@
             // 
             // billId
             // 
-            this.billId.Location = new System.Drawing.Point(683, 42);
+            this.billId.Enabled = false;
+            this.billId.Location = new System.Drawing.Point(660, 42);
             this.billId.Name = "billId";
-            this.billId.Size = new System.Drawing.Size(109, 20);
+            this.billId.Size = new System.Drawing.Size(132, 20);
             this.billId.TabIndex = 10;
             // 
             // button1
@@ -215,10 +219,20 @@
             // 
             // billAmount
             // 
-            this.billAmount.Location = new System.Drawing.Point(683, 68);
+            this.billAmount.Location = new System.Drawing.Point(660, 68);
             this.billAmount.Name = "billAmount";
-            this.billAmount.Size = new System.Drawing.Size(109, 20);
+            this.billAmount.Size = new System.Drawing.Size(132, 20);
             this.billAmount.TabIndex = 20;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(636, 100);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 21;
+            this.button2.Text = "Delete";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // CashDeals
             // 
@@ -226,6 +240,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(859, 486);
             this.ControlBox = false;
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.billAmount);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label9);
@@ -269,5 +284,6 @@
         private System.Windows.Forms.TextBox billId;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox billAmount;
+        private System.Windows.Forms.Button button2;
     }
 }

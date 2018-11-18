@@ -48,8 +48,9 @@ namespace SuperMarketMS
                         csTotalSales.Text = decimal.Parse(dr_getProduct["amount"].ToString()).ToString();
                     }
                 }
+                
             }
-
+         
             //dbconn.CloseConnection();
             //dbconn.OpenConnection();
             //string qr_getProduct1 = "SELECT sum(amount) AS amount, sum(revenue)  AS revenue FROM sm.sales where billDate like '" +
@@ -88,11 +89,13 @@ namespace SuperMarketMS
 
         private void dgvStocks_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvStocks.Rows[0].Cells[0].Value.ToString() != null && dgvStocks.Rows[0].Cells[0].Value.ToString() != "")
+
+
+            if (dgvStocks.Rows[e.RowIndex].Cells[0].Value.ToString() != null && dgvStocks.Rows[e.RowIndex].Cells[0].Value.ToString() != "")
             {
-                dgvStocks.Rows[0].Selected = true;
-                billId.Text = dgvStocks.SelectedRows[0].Cells[0].Value.ToString();
-                billAmount.Text = dgvStocks.SelectedRows[0].Cells[3].Value.ToString();
+
+                billId.Text = dgvStocks.Rows[e.RowIndex].Cells[0].Value.ToString();
+                billAmount.Text = dgvStocks.Rows[e.RowIndex].Cells[3].Value.ToString();
             }
         }
 
@@ -113,7 +116,27 @@ namespace SuperMarketMS
             billId.Clear();
             billAmount.Clear();
             billAmount.Focus();
+            
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dbconn.CloseConnection();
+            dbconn.OpenConnection();
+            string billNo = dgvStocks.SelectedRows[0].Cells[0].Value.ToString();
+            string Amount = dgvStocks.SelectedRows[0].Cells[3].Value.ToString();
+            //MessageBox.Show(delItemCode + delQty); 
+            string qaddtobill = "delete from sales where billid = '" + billId + "';";
+            dbconn.CloseConnection();
+            dbconn.OpenConnection();
+            MySqlCommand caddtobill = new MySqlCommand(qaddtobill, dbconn.connection);
+            int queryAffected = caddtobill.ExecuteNonQuery();
+
+            dateTimePicker1_ValueChanged("", e);
+            billId.Clear();
+            billAmount.Clear();
+            billAmount.Focus();
         }
     }
 }
