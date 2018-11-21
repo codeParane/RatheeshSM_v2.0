@@ -96,6 +96,7 @@ namespace SuperMarketMS
 
                 billId.Text = dgvStocks.Rows[e.RowIndex].Cells[0].Value.ToString();
                 billAmount.Text = dgvStocks.Rows[e.RowIndex].Cells[3].Value.ToString();
+                csaAmount.Text = dgvStocks.Rows[e.RowIndex].Cells[2].Value.ToString();
             }
         }
 
@@ -103,10 +104,12 @@ namespace SuperMarketMS
         {
             dbconn.CloseConnection();
             dbconn.OpenConnection();
-            string billNo = dgvStocks.SelectedRows[0].Cells[0].Value.ToString();
-            string Amount = dgvStocks.SelectedRows[0].Cells[3].Value.ToString();
+            string billNo = billId.Text;
+            double Amount = double.Parse(billAmount.Text);
+            double am = double.Parse(csaAmount.Text);
+
             //MessageBox.Show(delItemCode + delQty); 
-            string qaddtobill = "update sales set revenue = "+ Amount +" where billid = '"+ billId +"';";
+            string qaddtobill = "update sales set revenue = "+ Amount +", amount = "+ am +"  where billid = '"+ billNo +"';";
             dbconn.CloseConnection();
             dbconn.OpenConnection();
             MySqlCommand caddtobill = new MySqlCommand(qaddtobill, dbconn.connection);
@@ -116,6 +119,8 @@ namespace SuperMarketMS
             billId.Clear();
             billAmount.Clear();
             billAmount.Focus();
+            csaAmount.Clear();
+            MessageBox.Show("Amount Updated");
             
 
         }
@@ -127,7 +132,7 @@ namespace SuperMarketMS
             string billNo = dgvStocks.SelectedRows[0].Cells[0].Value.ToString();
             string Amount = dgvStocks.SelectedRows[0].Cells[3].Value.ToString();
             //MessageBox.Show(delItemCode + delQty); 
-            string qaddtobill = "delete from sales where billid = '" + billId + "';";
+            string qaddtobill = "delete from sales where billid = '" + billNo + "';";
             dbconn.CloseConnection();
             dbconn.OpenConnection();
             MySqlCommand caddtobill = new MySqlCommand(qaddtobill, dbconn.connection);
@@ -137,6 +142,7 @@ namespace SuperMarketMS
             billId.Clear();
             billAmount.Clear();
             billAmount.Focus();
+            csaAmount.Clear();
         }
     }
 }

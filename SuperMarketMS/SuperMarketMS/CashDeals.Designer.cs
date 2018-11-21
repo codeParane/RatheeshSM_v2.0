@@ -48,6 +48,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.billAmount = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.csaAmount = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStocks)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,13 +90,13 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvStocks.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvStocks.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dgvStocks.Location = new System.Drawing.Point(0, 129);
+            this.dgvStocks.Location = new System.Drawing.Point(0, 157);
             this.dgvStocks.Name = "dgvStocks";
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvStocks.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvStocks.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dgvStocks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStocks.Size = new System.Drawing.Size(859, 357);
+            this.dgvStocks.Size = new System.Drawing.Size(859, 329);
             this.dgvStocks.TabIndex = 4;
             this.dgvStocks.TabStop = false;
             this.dgvStocks.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStocks_RowEnter);
@@ -193,7 +194,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(615, 9);
+            this.label4.Location = new System.Drawing.Point(530, 13);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(113, 21);
             this.label4.TabIndex = 8;
@@ -209,7 +210,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(717, 100);
+            this.button1.Location = new System.Drawing.Point(717, 128);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 19;
@@ -226,7 +227,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(636, 100);
+            this.button2.Location = new System.Drawing.Point(636, 128);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 21;
@@ -234,12 +235,20 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // csaAmount
+            // 
+            this.csaAmount.Location = new System.Drawing.Point(660, 94);
+            this.csaAmount.Name = "csaAmount";
+            this.csaAmount.Size = new System.Drawing.Size(132, 20);
+            this.csaAmount.TabIndex = 22;
+            // 
             // CashDeals
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(859, 486);
             this.ControlBox = false;
+            this.Controls.Add(this.csaAmount);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.billAmount);
             this.Controls.Add(this.button1);
@@ -285,5 +294,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox billAmount;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox csaAmount;
     }
 }
