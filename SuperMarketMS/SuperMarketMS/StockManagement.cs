@@ -388,7 +388,7 @@ namespace SuperMarketMS
             msDiscountFinal.Text = "0";
             msDiscountPer.Text = "0%";
             msExpiryDate.Value = DateTime.Now;
-
+            msBarCode.Focus();
 
 
         }
@@ -537,6 +537,7 @@ namespace SuperMarketMS
                 {
                     MessageBox.Show("Stock Updated!!!");
                     msClear_Click("", e);
+                    
                 }
 
             }
